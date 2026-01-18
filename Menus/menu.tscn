@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmq40cojlu35a"]
+
+[ext_resource type="Script" path="res://Menus/menu.gd" id="1_np5ha"]
+[ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://BaseMachinaLogo.png" id="1_p7vlp"]
+[ext_resource type="FontFile" uid="uid://b165np44ypqi1" path="res://Orbitron-VariableFont_wght.ttf" id="2_iglv3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_157k4"]
+font = ExtResource("2_iglv3")
+font_size = 17
+
+[sub_resource type="LabelSettings" id="LabelSettings_1xffx"]
+font = ExtResource("2_iglv3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b862d"]
+bg_color = Color(0, 0.803922, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs8jd"]
+bg_color = Color(0.839216, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_np5ha")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -391.0
+offset_top = -211.0
+offset_right = 392.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_p7vlp")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "GDDOT EDITION"
+label_settings = SubResource("LabelSettings_157k4")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 106
+text = "To control: Move your mouse to rotate or use WASD keys or Arrow Keys"
+label_settings = SubResource("LabelSettings_1xffx")
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = 90.0
+offset_right = 86.0
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_iglv3")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_b862d")
+text = "START"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = 165.0
+offset_right = 86.0
+offset_bottom = 226.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_iglv3")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs8jd")
+text = "QUIT"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

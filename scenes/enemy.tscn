@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqb0opq2yxe31"]
+
+[ext_resource type="Script" uid="uid://b2bg05tfldwsc" path="res://enemy.gd" id="1_1y66q"]
+[ext_resource type="Texture2D" uid="uid://c6u2os5c6vv7c" path="res://Assets/Artboard 9.png" id="1_au0u7"]
+
+[node name="Enemy" type="CharacterBody2D"]
+scale = Vector2(0.679999, 0.679999)
+script = ExtResource("1_1y66q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-140.5, -1.2)
+rotation = -1.5708
+texture = ExtResource("1_au0u7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-140.5, -1.2000002)
+polygon = PackedVector2Array(-120, -81, -43, -2, -120, 82, 39, 84, 125, 2, 42, -82)

@@ -1,0 +1,257 @@
+[gd_scene load_steps=19 format=3 uid="uid://cl3linm1p282"]
+
+[ext_resource type="PackedScene" uid="uid://b7mkumddatt5" path="res://scenes/shield.tscn" id="1_a27ak"]
+[ext_resource type="Script" uid="uid://dppno0r882cyb" path="res://scenes/main.gd" id="1_y3hdt"]
+[ext_resource type="PackedScene" uid="uid://2vim32okptef" path="res://scenes/Base.tscn" id="2_1x661"]
+[ext_resource type="Script" uid="uid://cdstw58uoxcom" path="res://scenes/game_manager.gd" id="2_rrapr"]
+[ext_resource type="Script" uid="uid://dkdoxp3n3n7r7" path="res://scenes/enemy_spawner.gd" id="3_trceg"]
+[ext_resource type="PackedScene" uid="uid://bqb0opq2yxe31" path="res://scenes/enemy.tscn" id="4_2hlvi"]
+[ext_resource type="FontFile" uid="uid://b165np44ypqi1" path="res://Orbitron-VariableFont_wght.ttf" id="4_j8s4h"]
+[ext_resource type="Script" uid="uid://bnbtm4wg12g8i" path="res://scenes/path_follow_2d.gd" id="4_w2s4o"]
+[ext_resource type="Script" uid="uid://bkx61yuyko53w" path="res://scenes/game_over.gd" id="5_d1ca1"]
+[ext_resource type="Script" uid="uid://du2mgcxhy16os" path="res://scenes/score.gd" id="5_ylkt3"]
+[ext_resource type="Script" uid="uid://cmv66eam1evso" path="res://scenes/loading.gd" id="7_eb6dy"]
+[ext_resource type="AudioStream" uid="uid://c5tytfslxupei" path="res://Assets/Audio/Music60.mp3" id="9_dh7rg"]
+[ext_resource type="PackedScene" uid="uid://bcwdr5myw1lbm" path="res://scenes/button_press.tscn" id="10_r32jt"]
+
+[sub_resource type="Curve2D" id="Curve2D_xiqbh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, -522, -168.867, -197.408, 168.867, 197.408, 354, -367, 0, 0, 0, 0, 513, -22, 147.462, -168.867, -147.462, 168.867, 361, 337, 0, 0, 0, 0, -5, 461, 130.813, 187.895, -130.813, -187.895, -367, 309, 0, 0, 0, 0, -484, -10, -197.408, 180.759, 197.408, -180.759, -341, -372, 0, 0, 0, 0, -2, -522)
+}
+point_count = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwjqa"]
+bg_color = Color(0, 0.803922, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq1lh"]
+bg_color = Color(0.839216, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lms5j"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thxik"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_y3hdt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_rrapr")
+
+[node name="Enemy Spawner" type="Node2D" parent="GameManager"]
+script = ExtResource("3_trceg")
+enemy_scene = ExtResource("4_2hlvi")
+
+[node name="Loading" type="CanvasLayer" parent="GameManager"]
+process_mode = 2
+visible = false
+script = ExtResource("7_eb6dy")
+
+[node name="Panel" type="Panel" parent="GameManager/Loading"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0269, 1.05586)
+
+[node name="loading_label" type="Label" parent="GameManager/Loading"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -121.0
+offset_right = 304.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_font_sizes/font_size = 66
+text = "LOADING..."
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="GameManager/Loading"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Shield" parent="GameManager" instance=ExtResource("1_a27ak")]
+speedRotation = 4.5
+
+[node name="Base" parent="GameManager" instance=ExtResource("2_1x661")]
+
+[node name="Path2D" type="Path2D" parent="GameManager"]
+visible = false
+curve = SubResource("Curve2D_xiqbh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="GameManager/Path2D"]
+position = Vector2(-2, -522)
+rotation = -0.22285554
+script = ExtResource("4_w2s4o")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="GameManager/Path2D"]
+position = Vector2(305.75677, -416.8269)
+rotation = 0.73643976
+progress = 336.258
+script = ExtResource("4_w2s4o")
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="GameManager/Path2D"]
+position = Vector2(477.1304, -174.36836)
+rotation = 1.1675732
+progress = 635.155
+script = ExtResource("4_w2s4o")
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
+script = ExtResource("5_d1ca1")
+
+[node name="Panel" type="Panel" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0269, 1.05586)
+
+[node name="Label" type="Label" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -121.0
+offset_right = 304.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_font_sizes/font_size = 66
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -19.5
+offset_right = 91.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_font_sizes/font_size = 26
+text = "Score"
+horizontal_alignment = 1
+script = ExtResource("5_ylkt3")
+
+[node name="Retry" type="Button" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = 44.0
+offset_right = 86.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_xwjqa")
+text = "RETRY"
+
+[node name="Quit" type="Button" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = 119.0
+offset_right = 86.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_jq1lh")
+text = "QUIT"
+
+[node name="Game UI" type="CanvasLayer" parent="."]
+
+[node name="Press ESC" type="Label" parent="Game UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -409.0
+offset_top = -36.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_font_sizes/font_size = 19
+text = "Press \"ESC\" to go back to the menu  "
+horizontal_alignment = 2
+
+[node name="HealthBar" type="ProgressBar" parent="Game UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -57.0
+offset_right = 352.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_lms5j")
+theme_override_styles/fill = SubResource("StyleBoxFlat_thxik")
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false
+
+[node name="Health" type="Label" parent="Game UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -104.0
+offset_right = 125.0
+offset_bottom = -68.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_font_sizes/font_size = 28
+text = "Health"
+
+[node name="Score" type="Label" parent="Game UI"]
+offset_left = 14.0
+offset_top = 12.0
+offset_right = 196.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_font_sizes/font_size = 26
+text = "Score"
+script = ExtResource("5_ylkt3")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_dh7rg")
+autoplay = true
+bus = &"Music"
+
+[node name="ButtonPress" parent="." instance=ExtResource("10_r32jt")]
+
+[connection signal="ArduinoRead" from="GameManager" to="GameManager/Shield" method="_on_game_manager_arduino_read"]
+[connection signal="timeout" from="GameManager/Loading/Timer" to="GameManager/Loading" method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]
+[connection signal="pressed" from="GameOver/Quit" to="GameOver" method="_on_quit_pressed"]

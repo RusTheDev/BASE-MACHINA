@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://2vim32okptef"]
+
+[ext_resource type="Script" path="res://scenes/base.gd" id="1_8okqh"]
+[ext_resource type="Texture2D" uid="uid://co2mg3l02jose" path="res://Assets/Base.png" id="1_mwqbh"]
+[ext_resource type="AudioStream" uid="uid://cri2abhdqucw6" path="res://Assets/Audio/Fail.mp3" id="3_c5a4p"]
+
+[node name="Base" type="Area2D"]
+script = ExtResource("1_8okqh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_mwqbh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-40, -23, -77, -23, -77, 68, 76, 68, 75, -23, 39, -23, 38, -68, -40, -68)
+
+[node name="Hitsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c5a4p")
+bus = &"SFX"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

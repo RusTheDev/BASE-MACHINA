@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcwdr5myw1lbm"]
+
+[ext_resource type="AudioStream" uid="uid://2ywjk70lgrol" path="res://Assets/Audio/Button.mp3" id="1_e42rr"]
+
+[node name="ButtonPress" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_e42rr")
+bus = &"SFX"

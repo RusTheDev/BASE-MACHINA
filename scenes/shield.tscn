@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7mkumddatt5"]
+
+[ext_resource type="Script" path="res://shield.gd" id="1_q4kbl"]
+[ext_resource type="Texture2D" uid="uid://ccn8ngoxuum0l" path="res://Assets/Shield.png" id="2_opsgi"]
+[ext_resource type="AudioStream" uid="uid://h28vmn5lch8o" path="res://Assets/Audio/Shield-Hit.mp3" id="3_37u7r"]
+
+[node name="Shield" type="Node2D"]
+script = ExtResource("1_q4kbl")
+
+[node name="RotationOffset" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RotationOffset"]
+polygon = PackedVector2Array(145, -85, 170, -26, 168, 30, 149, 85, 180, 104, 207, 34, 208, -33, 179, -102)
+
+[node name="Sprite2D" type="Sprite2D" parent="RotationOffset"]
+texture_filter = 1
+position = Vector2(122, 0)
+rotation = 1.5708
+texture = ExtResource("2_opsgi")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_37u7r")
+attenuation = 1.56917
+bus = &"SFX"
+
+[connection signal="area_entered" from="RotationOffset" to="." method="_on_rotation_offset_area_entered"]

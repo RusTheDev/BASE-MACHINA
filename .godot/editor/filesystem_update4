@@ -1,0 +1,7 @@
+res://scenes/game_manager.gd
+res://scenes/main.tscn
+res://enemy.gd
+res://scenes/enemy_spawner.gd
+res://bullet.gd
+res://shield.gd
+res://scenes/enemy.tscn
