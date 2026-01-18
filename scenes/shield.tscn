@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7mkumddatt5"]
 
-[ext_resource type="Script" path="res://shield.gd" id="1_q4kbl"]
+[ext_resource type="Script" uid="uid://dpfrcd0g8r0hy" path="res://scripts/shield.gd" id="1_q4kbl"]
 [ext_resource type="Texture2D" uid="uid://ccn8ngoxuum0l" path="res://Assets/Shield.png" id="2_opsgi"]
 [ext_resource type="AudioStream" uid="uid://h28vmn5lch8o" path="res://Assets/Audio/Shield-Hit.mp3" id="3_37u7r"]
 

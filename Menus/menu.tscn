@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmq40cojlu35a"]
 
-[ext_resource type="Script" path="res://Menus/menu.gd" id="1_np5ha"]
-[ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://BaseMachinaLogo.png" id="1_p7vlp"]
-[ext_resource type="FontFile" uid="uid://b165np44ypqi1" path="res://Orbitron-VariableFont_wght.ttf" id="2_iglv3"]
+[ext_resource type="Script" uid="uid://1e2srw34feqh" path="res://Menus/menu.gd" id="1_np5ha"]
+[ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://Assets/BaseMachinaLogo.png" id="1_p7vlp"]
+[ext_resource type="FontFile" uid="uid://b165np44ypqi1" path="res://Assets/Orbitron-VariableFont_wght.ttf" id="2_iglv3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_157k4"]
 font = ExtResource("2_iglv3")

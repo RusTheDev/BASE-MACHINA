@@ -3,21 +3,23 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bwdj1db573qi0"
-path="res://.godot/imported/BaseMachinaLogo.png-532158d4aafe320c5dce5129336d22d7.ctex"
+path="res://.godot/imported/BaseMachinaLogo.png-b0b0bf837d0f3ad7fbc4a18537bbb8c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BaseMachinaLogo.png"
-dest_files=["res://.godot/imported/BaseMachinaLogo.png-532158d4aafe320c5dce5129336d22d7.ctex"]
+source_file="res://Assets/BaseMachinaLogo.png"
+dest_files=["res://.godot/imported/BaseMachinaLogo.png-b0b0bf837d0f3ad7fbc4a18537bbb8c0.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -25,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

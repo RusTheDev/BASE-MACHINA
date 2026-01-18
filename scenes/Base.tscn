@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2vim32okptef"]
 
-[ext_resource type="Script" path="res://scenes/base.gd" id="1_8okqh"]
+[ext_resource type="Script" uid="uid://gpbxrye80ia2" path="res://scripts/base.gd" id="1_8okqh"]
 [ext_resource type="Texture2D" uid="uid://co2mg3l02jose" path="res://Assets/Base.png" id="1_mwqbh"]
 [ext_resource type="AudioStream" uid="uid://cri2abhdqucw6" path="res://Assets/Audio/Fail.mp3" id="3_c5a4p"]
 

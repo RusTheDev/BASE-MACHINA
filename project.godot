@@ -18,7 +18,7 @@ config/icon="res://Assets/Base.png"
 
 [autoload]
 
-Global="*res://Global.gd"
+Global="*res://scripts/Global.gd"
 
 [display]
 
