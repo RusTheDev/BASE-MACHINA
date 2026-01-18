@@ -1,14 +1,14 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1765400772
+::res://::1768774270
 BaseMachinaLogo.png::CompressedTexture2D::3937361421090217929::1732467577::1743872508::1::::<><><>0<>0<>69179f1854d0df1d03dfea34ff7a3f54<>res://.godot/imported/BaseMachinaLogo.png-532158d4aafe320c5dce5129336d22d7.ctex::
-bullet.gd::GDScript::579944108044127961::1762101633::0::1::::<>Area2D<><>0<>0<><>::
+bullet.gd::GDScript::579944108044127961::1765429879::0::1::::<>Area2D<><>0<>0<><>::
 default_bus_layout.tres::AudioBusLayout::2678238582314538948::1743979344::0::1::::<><><>0<>0<><>::
-enemy.gd::GDScript::4283994391772065382::1762101633::0::1::::<>CharacterBody2D<><>0<>0<><>::
-export_presets.cfg::TextFile::-1::1763316550::0::1::::<><><>0<>0<><>::
+enemy.gd::GDScript::4283994391772065382::1765429936::0::1::::<>CharacterBody2D<><>0<>0<><>::
+export_presets.cfg::TextFile::-1::1765459002::0::1::::<><><>0<>0<><>::
 Global.gd::GDScript::210582222598584685::1762016637::0::1::::<>Node<><>0<>0<><>::
 icon.svg::CompressedTexture2D::6574807770325258088::1743472063::1743472069::1::::<><><>0<>0<>2e57afd023c1878f067c58606b6e6d9a<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 Orbitron-VariableFont_wght.ttf::FontFile::4277171887761441602::1692985884::1743820391::1::::<><><>0<>0<>edeed237dc83e13b954c0e6bf879cd82<>res://.godot/imported/Orbitron-VariableFont_wght.ttf-0bb3180e2dd0a0be6594354bb30b210a.fontdata::
-shield.gd::GDScript::8223452551392497282::1762016004::0::1::::<>Node2D<><>0<>0<><>::
+shield.gd::GDScript::8223452551392497282::1765429879::0::1::::<>Node2D<><>0<>0<><>::
 ::res://addons/::1761870601
 ::res://addons/gdserial/::1761870833
 gdserial.gdextension::GDExtension::3179974238252176589::1761870602::0::1::::<><><>0<>0<><>::
@@ -22,7 +22,7 @@ README.md::TextFile::-1::1761870601::0::1::::<><><>0<>0<><>::
 ::res://addons/gdserial/bin/macos-arm64/::1761870602
 ::res://addons/gdserial/bin/macos-x86_64/::1761870602
 ::res://addons/gdserial/bin/windows-arm64/::1761870602
-::res://addons/gdserial/bin/windows-x86_64/::1765400767
+::res://addons/gdserial/bin/windows-x86_64/::1768774266
 ::res://addons/gdserial/doc/::1761870602
 ::res://addons/gdserial/doc/en/::1761870602
 GdSerial.xml::TextFile::-1::1761870602::0::1::::<><><>0<>0<><>::
@@ -45,18 +45,19 @@ warn-arduino_bridge.txt::TextFile::-1::1760100304::0::1::::<><><>0<>0<><>::
 ::res://Menus/::1761870833
 menu.gd::GDScript::1834839876893860655::1760104250::0::1::::<>Control<><>0<>0<><>::
 menu.tscn::PackedScene::3263522416150696028::1761869991::0::1::::<><><>0<>0<><>::res://Menus/menu.gd<>uid://bwdj1db573qi0::::res://BaseMachinaLogo.png<>uid://b165np44ypqi1::::res://Orbitron-VariableFont_wght.ttf
-::res://scenes/::1763316572
+::res://scenes/::1765458941
 base.gd::GDScript::452201448590761107::1743979296::0::1::::<>Area2D<><>0<>0<><>::
 Base.tscn::PackedScene::1938959389544714353::1761869991::0::1::::<><><>0<>0<><>::res://scenes/base.gd<>uid://co2mg3l02jose::::res://Assets/Base.png<>uid://cri2abhdqucw6::::res://Assets/Audio/Fail.mp3
 bullet.tscn::PackedScene::8053530740923681211::1761869991::0::1::::<><><>0<>0<><>::res://bullet.gd<>uid://c3ysmm6cqvflu::::res://Assets/Laser.png
 button_press.tscn::PackedScene::2572428786392205066::1743979616::0::1::::<><><>0<>0<><>::uid://2ywjk70lgrol::::res://Assets/Audio/Button.mp3
-enemy.tscn::PackedScene::3513050299416370042::1761869991::0::1::::<><><>0<>0<><>::res://enemy.gd<>uid://c6u2os5c6vv7c::::res://Assets/Artboard 9.png
-game_manager.gd::GDScript::5021761235809219784::1763316572::0::1::::<>Node<><>0<>0<><>::
+enemy.tscn::PackedScene::3513050299416370042::1765430837::0::1::::<><><>0<>0<><>::uid://b2bg05tfldwsc::::res://enemy.gd<>uid://c6u2os5c6vv7c::::res://Assets/Artboard 9.png
+enemy_spawner.gd::GDScript::7868235563613751722::1765430750::0::1::::<>Node2D<><>0<>0<><>::
+game_manager.gd::GDScript::5021761235809219784::1765458941::0::1::::<>Node<><>0<>0<><>::
 game_over.gd::GDScript::3137719758394978646::1743975157::0::1::::<>CanvasLayer<><>0<>0<><>::
 healthBar.gd::GDScript::6550013493224331313::1743819502::0::1::::<>ProgressBar<><>0<>0<><>::
 loading.gd::GDScript::5660397220938210694::1762475787::0::1::::<>CanvasLayer<><>0<>0<><>::
 main.gd::GDScript::8243876034871279233::1762474291::0::1::::<>Node2D<><>0<>0<><>::
-main.tscn::PackedScene::164806002950987457::1763316212::0::1::::<><><>0<>0<><>::uid://b7mkumddatt5::::res://scenes/shield.tscn<>uid://dppno0r882cyb::::res://scenes/main.gd<>uid://2vim32okptef::::res://scenes/Base.tscn<>uid://cdstw58uoxcom::::res://scenes/game_manager.gd<>uid://bqb0opq2yxe31::::res://scenes/enemy.tscn<>uid://b165np44ypqi1::::res://Orbitron-VariableFont_wght.ttf<>uid://bnbtm4wg12g8i::::res://scenes/path_follow_2d.gd<>uid://bkx61yuyko53w::::res://scenes/game_over.gd<>uid://du2mgcxhy16os::::res://scenes/score.gd<>uid://cmv66eam1evso::::res://scenes/loading.gd<>uid://c5tytfslxupei::::res://Assets/Audio/Music60.mp3<>uid://bcwdr5myw1lbm::::res://scenes/button_press.tscn
+main.tscn::PackedScene::164806002950987457::1765458941::0::1::::<><><>0<>0<><>::uid://b7mkumddatt5::::res://scenes/shield.tscn<>uid://dppno0r882cyb::::res://scenes/main.gd<>uid://2vim32okptef::::res://scenes/Base.tscn<>uid://cdstw58uoxcom::::res://scenes/game_manager.gd<>uid://dkdoxp3n3n7r7::::res://scenes/enemy_spawner.gd<>uid://bqb0opq2yxe31::::res://scenes/enemy.tscn<>uid://b165np44ypqi1::::res://Orbitron-VariableFont_wght.ttf<>uid://bnbtm4wg12g8i::::res://scenes/path_follow_2d.gd<>uid://bkx61yuyko53w::::res://scenes/game_over.gd<>uid://du2mgcxhy16os::::res://scenes/score.gd<>uid://cmv66eam1evso::::res://scenes/loading.gd<>uid://c5tytfslxupei::::res://Assets/Audio/Music60.mp3<>uid://bcwdr5myw1lbm::::res://scenes/button_press.tscn
 path_follow_2d.gd::GDScript::3302116638602281274::1743866610::0::1::::<>PathFollow2D<><>0<>0<><>::
 score.gd::GDScript::8619516582804571866::1760060627::0::1::::<>Label<><>0<>0<><>::
 shield.tscn::PackedScene::136996462765185536::1761869991::0::1::::<><><>0<>0<><>::res://shield.gd<>uid://ccn8ngoxuum0l::::res://Assets/Shield.png<>uid://h28vmn5lch8o::::res://Assets/Audio/Shield-Hit.mp3
