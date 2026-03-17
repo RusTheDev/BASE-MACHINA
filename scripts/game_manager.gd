@@ -4,7 +4,7 @@ signal ArduinoRead(response: int)
 
 var serial: GdSerial
 
-@export var port: String = "COM5"
+@export var port: String = "/dev/ttyACM0"
 
 func _ready():
 	# Create serial instance
