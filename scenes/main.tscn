@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cl3linm1p282"]
+[gd_scene load_steps=21 format=3 uid="uid://cl3linm1p282"]
 
 [ext_resource type="PackedScene" uid="uid://b7mkumddatt5" path="res://scenes/shield.tscn" id="1_a27ak"]
 [ext_resource type="Script" uid="uid://dppno0r882cyb" path="res://scripts/main.gd" id="1_y3hdt"]
@@ -6,13 +6,15 @@
 [ext_resource type="Script" uid="uid://cdstw58uoxcom" path="res://scripts/game_manager.gd" id="2_rrapr"]
 [ext_resource type="Script" uid="uid://dkdoxp3n3n7r7" path="res://scripts/enemy_spawner.gd" id="3_trceg"]
 [ext_resource type="PackedScene" uid="uid://bqb0opq2yxe31" path="res://scenes/enemy.tscn" id="4_2hlvi"]
-[ext_resource type="FontFile" uid="uid://b165np44ypqi1" path="res://Assets/Orbitron-VariableFont_wght.ttf" id="4_j8s4h"]
 [ext_resource type="Script" uid="uid://bnbtm4wg12g8i" path="res://scripts/path_follow_2d.gd" id="4_w2s4o"]
 [ext_resource type="Script" uid="uid://bkx61yuyko53w" path="res://scripts/game_over.gd" id="5_d1ca1"]
 [ext_resource type="Script" uid="uid://du2mgcxhy16os" path="res://scripts/score.gd" id="5_ylkt3"]
 [ext_resource type="Script" uid="uid://cmv66eam1evso" path="res://scripts/loading.gd" id="7_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://c5tytfslxupei" path="res://Assets/Audio/Music60.mp3" id="9_dh7rg"]
 [ext_resource type="PackedScene" uid="uid://bcwdr5myw1lbm" path="res://scenes/button_press.tscn" id="10_r32jt"]
+[ext_resource type="FontFile" uid="uid://cuea07go4rmob" path="res://Assets/VT323-Regular.ttf" id="12_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://bn7113nexxt76" path="res://scenes/background.tscn" id="14_jkv2x"]
+[ext_resource type="Script" uid="uid://qtevkwrskqrg" path="res://scenes/background.gd" id="15_jbj1t"]
 
 [sub_resource type="Curve2D" id="Curve2D_xiqbh"]
 _data = {
@@ -70,7 +72,7 @@ offset_right = 304.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_j8s4h")
+theme_override_fonts/font = ExtResource("12_a8y0u")
 theme_override_font_sizes/font_size = 66
 text = "LOADING..."
 horizontal_alignment = 1
@@ -115,6 +117,8 @@ script = ExtResource("5_d1ca1")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -22.818237
+offset_bottom = -30.011597
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.0269, 1.05586)
@@ -131,8 +135,8 @@ offset_right = 304.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_j8s4h")
-theme_override_font_sizes/font_size = 66
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 72
 text = "GAME OVER"
 horizontal_alignment = 1
 
@@ -148,8 +152,8 @@ offset_right = 91.0
 offset_bottom = 19.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_j8s4h")
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 36
 text = "Score"
 horizontal_alignment = 1
 script = ExtResource("5_ylkt3")
@@ -166,8 +170,8 @@ offset_right = 86.0
 offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_j8s4h")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_xwjqa")
 text = "RETRY"
 
@@ -183,8 +187,8 @@ offset_right = 86.0
 offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_j8s4h")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_jq1lh")
 text = "QUIT"
 
@@ -200,8 +204,8 @@ offset_left = -409.0
 offset_top = -36.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_j8s4h")
-theme_override_font_sizes/font_size = 19
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 28
 text = "Press \"ESC\" to go back to the menu  "
 horizontal_alignment = 2
 
@@ -230,8 +234,8 @@ offset_top = -104.0
 offset_right = 125.0
 offset_bottom = -68.0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_j8s4h")
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 38
 text = "Health"
 
 [node name="Score" type="Label" parent="Game UI"]
@@ -239,8 +243,8 @@ offset_left = 14.0
 offset_top = 12.0
 offset_right = 196.0
 offset_bottom = 51.0
-theme_override_fonts/font = ExtResource("4_j8s4h")
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 38
 text = "Score"
 script = ExtResource("5_ylkt3")
 
@@ -250,6 +254,9 @@ autoplay = true
 bus = &"Music"
 
 [node name="ButtonPress" parent="." instance=ExtResource("10_r32jt")]
+
+[node name="Background" parent="." instance=ExtResource("14_jkv2x")]
+script = ExtResource("15_jbj1t")
 
 [connection signal="ArduinoRead" from="GameManager" to="GameManager/Shield" method="_on_game_manager_arduino_read"]
 [connection signal="timeout" from="GameManager/Loading/Timer" to="GameManager/Loading" method="_on_timer_timeout"]

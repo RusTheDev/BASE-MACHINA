@@ -1,15 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmq40cojlu35a"]
+[gd_scene load_steps=6 format=3 uid="uid://bmq40cojlu35a"]
 
 [ext_resource type="Script" uid="uid://1e2srw34feqh" path="res://Menus/menu.gd" id="1_np5ha"]
 [ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://Assets/BaseMachinaLogo.png" id="1_p7vlp"]
-[ext_resource type="FontFile" uid="uid://b165np44ypqi1" path="res://Assets/Orbitron-VariableFont_wght.ttf" id="2_iglv3"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_157k4"]
-font = ExtResource("2_iglv3")
-font_size = 17
-
-[sub_resource type="LabelSettings" id="LabelSettings_1xffx"]
-font = ExtResource("2_iglv3")
+[ext_resource type="FontFile" uid="uid://cuea07go4rmob" path="res://Assets/VT323-Regular.ttf" id="3_f371u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b862d"]
 bg_color = Color(0, 0.803922, 0, 1)
@@ -44,19 +37,6 @@ grow_vertical = 2
 layout_mode = 2
 texture = ExtResource("1_p7vlp")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "GDDOT EDITION"
-label_settings = SubResource("LabelSettings_157k4")
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 106
-text = "To control: Move your mouse to rotate or use WASD keys or Arrow Keys"
-label_settings = SubResource("LabelSettings_1xffx")
-horizontal_alignment = 1
-
 [node name="Start" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -70,8 +50,8 @@ offset_right = 86.0
 offset_bottom = 151.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_iglv3")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("3_f371u")
+theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxFlat_b862d")
 text = "START"
 
@@ -88,8 +68,8 @@ offset_right = 86.0
 offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_iglv3")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("3_f371u")
+theme_override_font_sizes/font_size = 37
 theme_override_styles/normal = SubResource("StyleBoxFlat_rs8jd")
 text = "QUIT"
 
