@@ -1,14 +1,14 @@
-Node2D
+AudioStreamPlayer2D
+AudioStreamPlayer2D      - Matches the "sound" keyword.
+TextureProgressBar
+ProgressBar
+CollisionPolygon2D
+CollisionShape2D
+Area2D
 Timer
+Node2D
 PathFollow2D
 Path2D
 HTTPRequest
-AudioStreamPlayer2D
 AudioListener2D
 VBoxContainer
-Button
-MarginContainer
-Label
-Panel
-CenterContainer
-CanvasLayer

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://clwmqej5j2cov"]
+
+[ext_resource type="Script" uid="uid://dogxee4qi8al8" path="res://scenes/health.gd" id="1_5e2k1"]
+
+[node name="Health" type="Area2D" groups=["health"]]
+collision_layer = 4
+script = ExtResource("1_5e2k1")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -15, 25, -15, 25, -40, 55, -40, 55, -15, 80, -15, 80, 15, 55, 15, 55, 40, 25, 40, 25, 15, 0, 15)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

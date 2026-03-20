@@ -1,8 +1,10 @@
-res://Menus/menu.tscn::67bbeb0d203a820dc4eeb1416658fa57::1773411449::res://.godot/exported/133200997/export-64dc1042ce42c8e948a8a7ac468d9dab-menu.scn
-res://scenes/Base.tscn::dafb69963488e928915e969bef3e3c2e::1773411450::res://.godot/exported/133200997/export-aa902d5b3642cce4f18a9e230c1d67f8-Base.scn
-res://scenes/bullet.tscn::3c60f77c14c79e6d3095ac56ef0148bc::1773411450::res://.godot/exported/133200997/export-6d8e6ff1e6f20a36e0402d27c623c86c-bullet.scn
-res://scenes/enemy.tscn::218655a9e1d6ac342a23e6a698465fcb::1773411450::res://.godot/exported/133200997/export-a930820ec0ab16db6719aff4daa500f9-enemy.scn
-res://scenes/main.tscn::30ee6edac2528680a67075087a1c90cc::1773781319::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
+res://Menus/menu.tscn::95e72ddeb3a7daaca8c98c2a9794a007::1773891724::res://.godot/exported/133200997/export-64dc1042ce42c8e948a8a7ac468d9dab-menu.scn
+res://scenes/Base.tscn::cf4fd5fdb3c5f0d9782d935f69b195a1::1773940943::res://.godot/exported/133200997/export-aa902d5b3642cce4f18a9e230c1d67f8-Base.scn
+res://scenes/bullet.tscn::0db8e38771ce5c6e1b85f2255594a188::1773940783::res://.godot/exported/133200997/export-6d8e6ff1e6f20a36e0402d27c623c86c-bullet.scn
+res://scenes/enemy.tscn::65dbd160de78665e9946067c405b947d::1773953795::res://.godot/exported/133200997/export-a930820ec0ab16db6719aff4daa500f9-enemy.scn
+res://scenes/main.tscn::bf7e5094e6ef5b3b5dac6c49154943b5::1773964375::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
 res://scenes/button_press.tscn::7648d4b80eab0dc3a58771ecd0116067::1773411450::res://.godot/exported/133200997/export-da8b0e42abd746a2dd5134b5fbb0f816-button_press.scn
-res://scenes/shield.tscn::c7af6f45115be9a12300a91637266c66::1773411450::res://.godot/exported/133200997/export-c4e76e990b704992ed3cd764ba63040b-shield.scn
+res://scenes/shield.tscn::600e21b97916451bafd60e44bd764aa0::1773940565::res://.godot/exported/133200997/export-c4e76e990b704992ed3cd764ba63040b-shield.scn
 res://default_bus_layout.tres::8917d12ef8c42f55682cf5c79c55bcd3::1773411450::res://.godot/exported/133200997/export-19246414aa9fb561ced4b8dce477acec-default_bus_layout.res
+res://scenes/background.tscn::6ce0248198df6e527eb118c0b9a4b012::1773888631::res://.godot/exported/133200997/export-f1e46807209045e58980fb2be1ec694d-background.scn
+res://scenes/health.tscn::23c7665b453dffcd28a20c1414010a6d::1773940813::res://.godot/exported/133200997/export-2bf179ce8a6c42a8e582f4195b66e230-health.scn

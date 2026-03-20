@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7mkumddatt5"]
+[gd_scene load_steps=5 format=3 uid="uid://b7mkumddatt5"]
 
 [ext_resource type="Script" uid="uid://dpfrcd0g8r0hy" path="res://scripts/shield.gd" id="1_q4kbl"]
 [ext_resource type="Texture2D" uid="uid://ccn8ngoxuum0l" path="res://Assets/Shield.png" id="2_opsgi"]
 [ext_resource type="AudioStream" uid="uid://h28vmn5lch8o" path="res://Assets/Audio/Shield-Hit.mp3" id="3_37u7r"]
+[ext_resource type="AudioStream" uid="uid://cxyge2wkxivv5" path="res://Assets/Audio/HealthFail2.mp3" id="4_gsp1a"]
 
 [node name="Shield" type="Node2D"]
 script = ExtResource("1_q4kbl")
 
 [node name="RotationOffset" type="Area2D" parent="."]
+collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RotationOffset"]
 polygon = PackedVector2Array(145, -85, 170, -26, 168, 30, 149, 85, 180, 104, 207, 34, 208, -33, 179, -102)
@@ -22,5 +24,9 @@ texture = ExtResource("2_opsgi")
 stream = ExtResource("3_37u7r")
 attenuation = 1.56917
 bus = &"SFX"
+
+[node name="HealFail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gsp1a")
+attenuation = 0.43527532
 
 [connection signal="area_entered" from="RotationOffset" to="." method="_on_rotation_offset_area_entered"]

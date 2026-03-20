@@ -4,7 +4,8 @@ signal ArduinoRead(response: int)
 
 var serial: GdSerial
 
-@export var port: String = "/dev/ttyACM0"
+@export var port: String = "COM3"
+#For Linux "/dev/ttyACM0"
 
 func _ready():
 	# Create serial instance
@@ -32,9 +33,23 @@ func _process(_delta):
 	while serial.bytes_available() > 0:
 		var line: String = serial.readline().strip_edges()
 		
+		if line == "PRESS":
+			_simulate_keypress()
+			print("PRESSED")
+		
 		#ignore empty or partial lines
 		if line == "":
 			continue
 		
 		var angle := int(line)
 		emit_signal("ArduinoRead", angle)
+
+func _simulate_keypress():
+	var a = InputEventAction.new()
+	a.action = "Enter" 
+	a.pressed = true
+	Input.parse_input_event(a)
+	
+	# Release it immediately so it's a single click
+	a.pressed = false
+	Input.parse_input_event(a)

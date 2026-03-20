@@ -14,7 +14,7 @@ func _draw():
 		var currentRadius = i * base_radius
 		draw_circle(Vector2(0,0), currentRadius, green, false, 0.9, true)
 	
-	for i in range(circle_count):
+	for i in range(4):
 		var currentRadius = i * second_radius
 		draw_circle(Vector2(0,0), currentRadius, green, false, 3.4, true)
 	

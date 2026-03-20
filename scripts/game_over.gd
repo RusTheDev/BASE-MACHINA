@@ -11,6 +11,7 @@ func _on_retry_pressed() -> void:
 func game_over():
 	get_tree().paused = true
 	remove_bullets()
+	$GameOcerSound.play(1.47)
 	self.show()
 
 func remove_bullets():

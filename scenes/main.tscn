@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cl3linm1p282"]
+[gd_scene load_steps=23 format=3 uid="uid://cl3linm1p282"]
 
 [ext_resource type="PackedScene" uid="uid://b7mkumddatt5" path="res://scenes/shield.tscn" id="1_a27ak"]
 [ext_resource type="Script" uid="uid://dppno0r882cyb" path="res://scripts/main.gd" id="1_y3hdt"]
@@ -8,11 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bqb0opq2yxe31" path="res://scenes/enemy.tscn" id="4_2hlvi"]
 [ext_resource type="Script" uid="uid://bnbtm4wg12g8i" path="res://scripts/path_follow_2d.gd" id="4_w2s4o"]
 [ext_resource type="Script" uid="uid://bkx61yuyko53w" path="res://scripts/game_over.gd" id="5_d1ca1"]
+[ext_resource type="AudioStream" uid="uid://cnsdb8hk4sqgp" path="res://Assets/Audio/EnemySpawningIn.mp3" id="5_jbj1t"]
 [ext_resource type="Script" uid="uid://du2mgcxhy16os" path="res://scripts/score.gd" id="5_ylkt3"]
 [ext_resource type="Script" uid="uid://cmv66eam1evso" path="res://scripts/loading.gd" id="7_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://c5tytfslxupei" path="res://Assets/Audio/Music60.mp3" id="9_dh7rg"]
 [ext_resource type="PackedScene" uid="uid://bcwdr5myw1lbm" path="res://scenes/button_press.tscn" id="10_r32jt"]
 [ext_resource type="FontFile" uid="uid://cuea07go4rmob" path="res://Assets/VT323-Regular.ttf" id="12_a8y0u"]
+[ext_resource type="AudioStream" uid="uid://ddcna7cmji883" path="res://Assets/Audio/gameover.mp3" id="13_muem4"]
 [ext_resource type="PackedScene" uid="uid://bn7113nexxt76" path="res://scenes/background.tscn" id="14_jkv2x"]
 [ext_resource type="Script" uid="uid://qtevkwrskqrg" path="res://scenes/background.gd" id="15_jbj1t"]
 
@@ -47,6 +49,15 @@ script = ExtResource("2_rrapr")
 script = ExtResource("3_trceg")
 enemy_scene = ExtResource("4_2hlvi")
 
+[node name="Timer" type="Timer" parent="GameManager/Enemy Spawner"]
+wait_time = 3.0
+autostart = true
+
+[node name="EnemySpawner" type="AudioStreamPlayer2D" parent="GameManager/Enemy Spawner"]
+stream = ExtResource("5_jbj1t")
+attenuation = 1.681793
+bus = &"SFX"
+
 [node name="Loading" type="CanvasLayer" parent="GameManager"]
 process_mode = 2
 visible = false
@@ -78,7 +89,7 @@ text = "LOADING..."
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="GameManager/Loading"]
-wait_time = 2.0
+wait_time = 1.5
 one_shot = true
 autostart = true
 
@@ -192,31 +203,20 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_jq1lh")
 text = "QUIT"
 
-[node name="Game UI" type="CanvasLayer" parent="."]
+[node name="GameOcerSound" type="AudioStreamPlayer2D" parent="GameOver"]
+stream = ExtResource("13_muem4")
+bus = &"SFX"
 
-[node name="Press ESC" type="Label" parent="Game UI"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -409.0
-offset_top = -36.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 28
-text = "Press \"ESC\" to go back to the menu  "
-horizontal_alignment = 2
+[node name="Game UI" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="Game UI"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = -57.0
-offset_right = 352.0
-offset_bottom = -20.0
+offset_left = 21.0
+offset_top = -59.0
+offset_right = 348.0
+offset_bottom = -22.0
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_lms5j")
 theme_override_styles/fill = SubResource("StyleBoxFlat_thxik")
@@ -229,10 +229,10 @@ show_percentage = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -104.0
-offset_right = 125.0
-offset_bottom = -68.0
+offset_left = 25.0
+offset_top = -110.0
+offset_right = 126.0
+offset_bottom = -71.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("12_a8y0u")
 theme_override_font_sizes/font_size = 38
@@ -259,6 +259,7 @@ bus = &"Music"
 script = ExtResource("15_jbj1t")
 
 [connection signal="ArduinoRead" from="GameManager" to="GameManager/Shield" method="_on_game_manager_arduino_read"]
+[connection signal="timeout" from="GameManager/Enemy Spawner/Timer" to="GameManager/Enemy Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="GameManager/Loading/Timer" to="GameManager/Loading" method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]
 [connection signal="pressed" from="GameOver/Quit" to="GameOver" method="_on_quit_pressed"]

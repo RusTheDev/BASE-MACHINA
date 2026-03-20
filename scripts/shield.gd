@@ -46,7 +46,9 @@ func _physics_process(_delta: float) -> void:
 func _on_rotation_offset_area_entered(_area: Area2D) -> void:
 	Global.score += 1
 	$HitSound.play()
-	
+	if _area and _area.is_in_group("health"):
+		Global.score -= 1
+		$HealFail.play()
 
 func _on_game_manager_arduino_read(response: Variant) -> void:
 	rotation_offset.rotation = deg_to_rad(response * speedRotation)

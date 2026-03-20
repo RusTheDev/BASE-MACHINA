@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmq40cojlu35a"]
+[gd_scene load_steps=8 format=3 uid="uid://bmq40cojlu35a"]
 
 [ext_resource type="Script" uid="uid://1e2srw34feqh" path="res://Menus/menu.gd" id="1_np5ha"]
 [ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://Assets/BaseMachinaLogo.png" id="1_p7vlp"]
+[ext_resource type="Script" uid="uid://cl3sf2s4ych25" path="res://scenes/menuBackground.gd" id="3_6ex8j"]
 [ext_resource type="FontFile" uid="uid://cuea07go4rmob" path="res://Assets/VT323-Regular.ttf" id="3_f371u"]
+[ext_resource type="PackedScene" uid="uid://bn7113nexxt76" path="res://scenes/background.tscn" id="4_jvnec"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b862d"]
 bg_color = Color(0, 0.803922, 0, 1)
@@ -19,22 +21,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_np5ha")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -391.0
-offset_top = -211.0
-offset_right = 392.0
-offset_bottom = 67.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Background" parent="." instance=ExtResource("4_jvnec")]
+script = ExtResource("3_6ex8j")
 
-[node name="Logo" type="TextureRect" parent="VBoxContainer"]
-layout_mode = 2
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 114.0
+offset_right = 1032.0
+offset_bottom = 340.0
 texture = ExtResource("1_p7vlp")
 
 [node name="Start" type="Button" parent="."]

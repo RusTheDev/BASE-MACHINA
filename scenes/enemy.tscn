@@ -1,11 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqb0opq2yxe31"]
+[gd_scene load_steps=7 format=3 uid="uid://bqb0opq2yxe31"]
 
 [ext_resource type="Script" uid="uid://b2bg05tfldwsc" path="res://scripts/enemy.gd" id="1_1y66q"]
 [ext_resource type="Texture2D" uid="uid://c6u2os5c6vv7c" path="res://Assets/Artboard 9.png" id="1_au0u7"]
+[ext_resource type="AudioStream" uid="uid://der2382moyo5u" path="res://Assets/Audio/laserfiring.mp3" id="3_4ra3w"]
+[ext_resource type="AudioStream" uid="uid://2v61wekoyr44" path="res://Assets/Audio/EnemyBlown.mp3" id="4_5uy6h"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md0e3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ra3w"]
+bg_color = Color(0.8054575, 0.807029, 0, 1)
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.679999, 0.679999)
 script = ExtResource("1_1y66q")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -217.64737
+offset_top = -50.000072
+offset_right = -50.000076
+offset_bottom = 45.588306
+theme_override_styles/background = SubResource("StyleBoxFlat_md0e3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4ra3w")
+max_value = 5.0
+step = 1.0
+value = 5.0
+fill_mode = 1
+show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-140.5, -1.2)
@@ -15,3 +40,14 @@ texture = ExtResource("1_au0u7")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-140.5, -1.2000002)
 polygon = PackedVector2Array(-120, -81, -43, -2, -120, 82, 39, 84, 125, 2, 42, -82)
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4ra3w")
+attenuation = 1.624505
+bus = &"SFX"
+
+[node name="EnemyBlown" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5uy6h")
+bus = &"SFX"
+
+[connection signal="finished" from="EnemyBlown" to="." method="_on_enemy_blown_finished"]

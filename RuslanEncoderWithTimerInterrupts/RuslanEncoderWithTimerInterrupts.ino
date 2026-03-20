@@ -3,9 +3,7 @@
  *
  * This example code is in the public domain.
  */
-
 #include <Encoder.h>
-
 #define USE_TIMER_1     true
 #include "TimerInterrupt.h"
 
@@ -15,6 +13,8 @@
 //   Good Performance: only the first pin has interrupt capability
 //   Low Performance:  neither pin has interrupt capability
 Encoder myEnc(6, 7);
+
+const int buttonPin = 5;
 //   avoid using pins with LEDs attached
 
 #define TPR     80 //Full cycle
@@ -26,6 +26,11 @@ unsigned int outputPin  = A0;
 
 long oldPosition  = -999;
 long oldClamped = 0;
+
+// --- Button Debounce Variables ---
+int lastButtonState = HIGH;      
+unsigned long lastDebounceTime = 0;  
+unsigned long debounceDelay = 50;
 
 // ========================================================================================
 // Timer
@@ -59,10 +64,12 @@ void setup() {
   Serial.begin(115200);
   //Serial.println("Basic Encoder Test:");
   // initialize our timer
+  pinMode(buttonPin, INPUT_PULLUP); 
   TimerInit1();
 }
 
 void loop() {
+  
   //Mark's code
   long newPosition = myEnc.read();
   if (newPosition != oldPosition) {
@@ -73,6 +80,16 @@ void loop() {
       //Serial.print(angle);
     }
   }
+
+  int currentRead = digitalRead(buttonPin);
+
+  // If the button JUST went from HIGH to LOW
+  if (currentRead == LOW && lastButtonState == HIGH) {
+    // We use a capital 'P' to make it stand out from the numbers
+    Serial.println("PRESS"); 
+    delay(5); // Tiny delay to prevent double-triggering
+  }
+  lastButtonState = currentRead;
 
 }
 

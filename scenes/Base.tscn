@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://2vim32okptef"]
+[gd_scene load_steps=5 format=3 uid="uid://2vim32okptef"]
 
 [ext_resource type="Script" uid="uid://gpbxrye80ia2" path="res://scripts/base.gd" id="1_8okqh"]
 [ext_resource type="Texture2D" uid="uid://co2mg3l02jose" path="res://Assets/Base.png" id="1_mwqbh"]
 [ext_resource type="AudioStream" uid="uid://cri2abhdqucw6" path="res://Assets/Audio/Fail.mp3" id="3_c5a4p"]
+[ext_resource type="AudioStream" uid="uid://wg3k7k8aeqj5" path="res://Assets/Audio/Healing.mp3" id="4_15k71"]
 
 [node name="Base" type="Area2D"]
+collision_mask = 6
 script = ExtResource("1_8okqh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,6 +18,11 @@ polygon = PackedVector2Array(-40, -23, -77, -23, -77, 68, 76, 68, 75, -23, 39, -
 
 [node name="Hitsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_c5a4p")
+bus = &"SFX"
+
+[node name="Healsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_15k71")
+attenuation = 0.42044812
 bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
