@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cl3linm1p282"]
+[gd_scene load_steps=24 format=3 uid="uid://cl3linm1p282"]
 
 [ext_resource type="PackedScene" uid="uid://b7mkumddatt5" path="res://scenes/shield.tscn" id="1_a27ak"]
 [ext_resource type="Script" uid="uid://dppno0r882cyb" path="res://scripts/main.gd" id="1_y3hdt"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://c5tytfslxupei" path="res://Assets/Audio/Music60.mp3" id="9_dh7rg"]
 [ext_resource type="PackedScene" uid="uid://bcwdr5myw1lbm" path="res://scenes/button_press.tscn" id="10_r32jt"]
 [ext_resource type="FontFile" uid="uid://cuea07go4rmob" path="res://Assets/VT323-Regular.ttf" id="12_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://clwmqej5j2cov" path="res://scenes/health.tscn" id="12_dp3eg"]
 [ext_resource type="AudioStream" uid="uid://ddcna7cmji883" path="res://Assets/Audio/gameover.mp3" id="13_muem4"]
 [ext_resource type="PackedScene" uid="uid://bn7113nexxt76" path="res://scenes/background.tscn" id="14_jkv2x"]
 [ext_resource type="Script" uid="uid://qtevkwrskqrg" path="res://scenes/background.gd" id="15_jbj1t"]
@@ -141,15 +142,37 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -304.0
-offset_top = -121.0
+offset_top = -181.0
 offset_right = 304.0
-offset_bottom = -30.0
+offset_bottom = -90.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 80
 text = "GAME OVER"
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="GameOver/Label"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = 39.5
+offset_right = 345.0
+offset_bottom = 130.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 48
+text = "Tip: Don't Block     with the shield"
+horizontal_alignment = 1
+
+[node name="Health" parent="GameOver/Label" instance=ExtResource("12_dp3eg")]
+position = Vector2(280, 110)
+scale = Vector2(0.7899305, -0.7633637)
 
 [node name="Score" type="Label" parent="GameOver"]
 anchors_preset = 8
@@ -164,7 +187,7 @@ offset_bottom = 19.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 46
 text = "Score"
 horizontal_alignment = 1
 script = ExtResource("5_ylkt3")
