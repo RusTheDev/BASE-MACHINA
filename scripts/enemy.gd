@@ -2,7 +2,8 @@ extends CharacterBody2D
 #Fire Bullet
 @export var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
 @export var fire_rate: float = 1.0
-@onready var ammo_bar: ProgressBar = $ProgressBar
+@onready var ammo_bar: ProgressBar = $Polygon2D/ProgressBar
+
 
 #Health
 @export var health_scene: PackedScene = preload("res://scenes/health.tscn")
@@ -19,6 +20,24 @@ var angle: float = 0.0
 @export var speed: float = 1.5
 var previous_position: Vector2
 
+#Asset Drawing
+func _draw() -> void:
+	var points = PackedVector2Array([ 
+	Vector2(0, 0),
+	Vector2(-80, -80),
+	Vector2(-240, -80),
+	Vector2(-160, 0),
+	Vector2(-240, 80),
+	Vector2(-80, 80),
+	Vector2(0, 0),
+	])
+	
+	var lineWidth: float = 16.0
+	
+	draw_polyline(points, Color.BLUE, lineWidth)
+	draw_line(Vector2(0, 0), Vector2(-160, 0), Color.BLUE, lineWidth)
+	pass
+
 func _ready():
 	angle = randf_range(0, TAU)
 	previous_position = global_position
@@ -26,7 +45,6 @@ func _ready():
 	await get_tree().create_timer(4.0).timeout
 	ammo_bar.value = ammo_count
 	can_shoot = true
-	
 
 #Bullet Firing Logic
 func _process(delta):
@@ -45,8 +63,6 @@ func _physics_process(_delta: float) -> void:
 	move_character()
 	
 func move_character() -> void:
-	
-	
 	angle += get_physics_process_delta_time() * speed
 	var x_pos = cos(angle)
 	var y_pos = sin(angle)
@@ -71,7 +87,6 @@ func fire_bullet() -> void:
 		out_of_ammo()
 	else:
 		object_spawn(bullet_scene)
-	
 
 func object_spawn(scene: PackedScene) -> void:
 	var instance = scene.instantiate()

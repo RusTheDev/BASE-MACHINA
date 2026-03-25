@@ -1,20 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://2vim32okptef"]
+[gd_scene load_steps=7 format=3 uid="uid://2vim32okptef"]
 
 [ext_resource type="Script" uid="uid://gpbxrye80ia2" path="res://scripts/base.gd" id="1_8okqh"]
-[ext_resource type="Texture2D" uid="uid://co2mg3l02jose" path="res://Assets/Base.png" id="1_mwqbh"]
 [ext_resource type="AudioStream" uid="uid://cri2abhdqucw6" path="res://Assets/Audio/Fail.mp3" id="3_c5a4p"]
 [ext_resource type="AudioStream" uid="uid://wg3k7k8aeqj5" path="res://Assets/Audio/Healing.mp3" id="4_15k71"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15k71"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nroc6"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yy5yb"]
+bg_color = Color(1, 0, 0, 1)
 
 [node name="Base" type="Area2D"]
 collision_mask = 6
 script = ExtResource("1_8okqh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("1_mwqbh")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-40, -23, -77, -23, -77, 68, 76, 68, 75, -23, 39, -23, 38, -68, -40, -68)
+polygon = PackedVector2Array(-40, -22, -76, -22, -76, 67, 76, 67, 76, -22, 40, -22, 40, -67, -40, -67)
 
 [node name="Hitsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_c5a4p")
@@ -24,5 +28,68 @@ bus = &"SFX"
 stream = ExtResource("4_15k71")
 attenuation = 0.42044812
 bus = &"SFX"
+
+[node name="Left" type="ProgressBar" parent="."]
+offset_left = -76.0
+offset_top = -22.0
+offset_bottom = 67.0
+theme_override_styles/background = SubResource("StyleBoxFlat_15k71")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nroc6")
+max_value = 12.0
+step = 1.0
+value = 12.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Left" type="ProgressBar" parent="Left"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = -45.0
+offset_right = 76.0
+offset_bottom = 14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_15k71")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nroc6")
+max_value = 12.0
+step = 1.0
+value = 12.0
+fill_mode = 1
+show_percentage = false
+
+[node name="Right" type="ProgressBar" parent="."]
+offset_top = -22.0
+offset_right = 76.0
+offset_bottom = 67.0
+theme_override_styles/background = SubResource("StyleBoxFlat_15k71")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yy5yb")
+max_value = 12.0
+step = 1.0
+value = 12.0
+show_percentage = false
+
+[node name="Right" type="ProgressBar" parent="Right"]
+layout_mode = 0
+offset_top = -45.0
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_15k71")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yy5yb")
+max_value = 12.0
+step = 1.0
+value = 12.0
+show_percentage = false
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -19.0
+offset_top = -5.0
+offset_right = 19.0
+offset_bottom = 67.0
+color = Color(1, 0, 0, 1)
+
+[node name="Door" type="ColorRect" parent="."]
+offset_left = -14.0
+offset_top = 13.0
+offset_right = 14.0
+offset_bottom = 67.0
+color = Color(0, 9.024516e-09, 0.07746076, 1)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

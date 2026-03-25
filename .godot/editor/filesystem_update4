@@ -1,2 +1,6 @@
+res://scenes/enemy.tscn
+res://scenes/Base.tscn
 res://scenes/main.tscn
-res://scripts/game_manager.gd
+res://scenes/bullet.tscn
+res://scripts/enemy.gd
+res://scenes/shield.tscn

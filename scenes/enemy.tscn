@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqb0opq2yxe31"]
+[gd_scene load_steps=6 format=3 uid="uid://bqb0opq2yxe31"]
 
 [ext_resource type="Script" uid="uid://b2bg05tfldwsc" path="res://scripts/enemy.gd" id="1_1y66q"]
-[ext_resource type="Texture2D" uid="uid://c6u2os5c6vv7c" path="res://Assets/Artboard 9.png" id="1_au0u7"]
 [ext_resource type="AudioStream" uid="uid://der2382moyo5u" path="res://Assets/Audio/laserfiring.mp3" id="3_4ra3w"]
 [ext_resource type="AudioStream" uid="uid://2v61wekoyr44" path="res://Assets/Audio/EnemyBlown.mp3" id="4_5uy6h"]
 
@@ -12,18 +11,22 @@ corner_radius_bottom_right = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ra3w"]
 bg_color = Color(0.8054575, 0.807029, 0, 1)
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
-scale = Vector2(0.679999, 0.679999)
+scale = Vector2(0.6, 0.6)
+collision_layer = 8
 script = ExtResource("1_1y66q")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -217.64737
-offset_top = -50.000072
-offset_right = -50.000076
-offset_bottom = 45.588306
+[node name="Polygon2D" type="Polygon2D" parent="."]
+show_behind_parent = true
+clip_children = 1
+polygon = PackedVector2Array(0, 0, -80, -80, -240, -80, -160, 0, -240, 80, -80, 80)
+
+[node name="ProgressBar" type="ProgressBar" parent="Polygon2D"]
+show_behind_parent = true
+offset_left = -240.0
+offset_top = -80.0
+offset_bottom = 80.0
 theme_override_styles/background = SubResource("StyleBoxFlat_md0e3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4ra3w")
 max_value = 5.0
@@ -32,14 +35,10 @@ value = 5.0
 fill_mode = 1
 show_percentage = false
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-140.5, -1.2)
-rotation = -1.5708
-texture = ExtResource("1_au0u7")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-140.5, -1.2000002)
-polygon = PackedVector2Array(-120, -81, -43, -2, -120, 82, 39, 84, 125, 2, 42, -82)
+visible = false
+position = Vector2(-125.00018, -2.941181)
+polygon = PackedVector2Array(-116.17664, -77.9413, -35.294167, 2.941181, -116.17664, 83.823654, 44.117714, 83.823654, 125.00019, 2.941181, 44.117714, -77.9413)
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_4ra3w")
