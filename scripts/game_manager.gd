@@ -1,14 +1,16 @@
 extends Node
 
 signal ArduinoRead(response: int)
+signal ButtonPress
 
 var serial: GdSerial
 
-@export var port: String = "/dev/ttyACM0"
+@export var port: String = "COM3"
 #For Linux: "/dev/ttyACM0"
 #For PC: "COM3"
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Create serial instance
 	serial = GdSerial.new()
 	
@@ -35,8 +37,9 @@ func _process(_delta):
 		var line: String = serial.readline().strip_edges()
 		
 		if line == "PRESS":
-			_simulate_keypress()
-			print("PRESSED")
+			emit_signal("ButtonPress")
+			#_simulate_keypress()
+		
 		
 		#ignore empty or partial lines
 		if line == "":
@@ -47,7 +50,7 @@ func _process(_delta):
 
 func _simulate_keypress():
 	var a = InputEventAction.new()
-	a.action = "Enter" 
+	a.action = "ui_accept" 
 	a.pressed = true
 	Input.parse_input_event(a)
 	

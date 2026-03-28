@@ -87,7 +87,7 @@ void loop() {
   if (currentRead == LOW && lastButtonState == HIGH) {
     // We use a capital 'P' to make it stand out from the numbers
     Serial.println("PRESS"); 
-    delay(5); // Tiny delay to prevent double-triggering
+    delay(10); // Tiny delay to prevent double-triggering
   }
   lastButtonState = currentRead;
 

@@ -3,9 +3,12 @@ extends Node2D
 @onready var rotation_offset: Area2D = $RotationOffset
 @onready var sprite_2d: Sprite2D = $RotationOffset/Sprite2D
 
-@export var speedRotation: float = 3.5
+@export var speedRotation: float = 4.5
 
 var rotation_value := 0.0
+
+func _ready() -> void:
+	GameManager.ArduinoRead.connect(_on_arduino_read)
 
 func _physics_process(_delta: float) -> void:
 	var key_pressed := false
@@ -50,6 +53,10 @@ func _on_rotation_offset_area_entered(_area: Area2D) -> void:
 		Global.score -= 1
 		$HealFail.play()
 
-func _on_game_manager_arduino_read(response: Variant) -> void:
+func _on_arduino_read(response: Variant) -> void:
 	rotation_offset.rotation = deg_to_rad(response * speedRotation)
 	print(rotation_offset.rotation_degrees)
+
+#func _on_game_manager_arduino_read(response: Variant) -> void:
+	#rotation_offset.rotation = deg_to_rad(response * speedRotation)
+	#print(rotation_offset.rotation_degrees)

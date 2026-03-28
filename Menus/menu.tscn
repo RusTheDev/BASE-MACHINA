@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmq40cojlu35a"]
+[gd_scene load_steps=11 format=3 uid="uid://bmq40cojlu35a"]
 
 [ext_resource type="Script" uid="uid://1e2srw34feqh" path="res://Menus/menu.gd" id="1_np5ha"]
 [ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://Assets/BaseMachinaLogo.png" id="1_p7vlp"]
 [ext_resource type="Script" uid="uid://cl3sf2s4ych25" path="res://scenes/menuBackground.gd" id="3_6ex8j"]
 [ext_resource type="FontFile" uid="uid://cuea07go4rmob" path="res://Assets/VT323-Regular.ttf" id="3_f371u"]
+[ext_resource type="PackedScene" uid="uid://2vim32okptef" path="res://scenes/Base.tscn" id="4_h3048"]
 [ext_resource type="PackedScene" uid="uid://bn7113nexxt76" path="res://scenes/background.tscn" id="4_jvnec"]
+[ext_resource type="PackedScene" uid="uid://b7mkumddatt5" path="res://scenes/shield.tscn" id="5_cyvgt"]
+[ext_resource type="AudioStream" uid="uid://2ywjk70lgrol" path="res://Assets/Audio/Button.mp3" id="8_cyvgt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b862d"]
 bg_color = Color(0, 0.803922, 0, 1)
@@ -24,12 +27,20 @@ script = ExtResource("1_np5ha")
 [node name="Background" parent="." instance=ExtResource("4_jvnec")]
 script = ExtResource("3_6ex8j")
 
+[node name="Base" parent="." instance=ExtResource("4_h3048")]
+position = Vector2(640, 400)
+scale = Vector2(0.5, 0.5)
+
+[node name="Shield" parent="." instance=ExtResource("5_cyvgt")]
+position = Vector2(640, 400)
+scale = Vector2(0.5, 0.5)
+
 [node name="Logo" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 249.0
-offset_top = 114.0
+offset_top = 48.0
 offset_right = 1032.0
-offset_bottom = 340.0
+offset_bottom = 274.0
 texture = ExtResource("1_p7vlp")
 
 [node name="Start" type="Button" parent="."]
@@ -39,10 +50,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = 90.0
-offset_right = 86.0
-offset_bottom = 151.0
+offset_left = -91.0
+offset_top = 452.0
+offset_right = 81.0
+offset_bottom = 513.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_f371u")
@@ -57,16 +68,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = 165.0
-offset_right = 86.0
-offset_bottom = 226.0
+offset_left = 610.0
+offset_top = 368.0
+offset_right = 782.0
+offset_bottom = 429.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_f371u")
 theme_override_font_sizes/font_size = 37
 theme_override_styles/normal = SubResource("StyleBoxFlat_rs8jd")
 text = "QUIT"
+
+[node name="Button" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_cyvgt")
+bus = &"SFX"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
