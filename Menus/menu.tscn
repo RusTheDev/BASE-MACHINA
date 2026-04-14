@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmq40cojlu35a"]
+[gd_scene load_steps=13 format=3 uid="uid://bmq40cojlu35a"]
 
 [ext_resource type="Script" uid="uid://1e2srw34feqh" path="res://Menus/menu.gd" id="1_np5ha"]
 [ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://Assets/BaseMachinaLogo.png" id="1_p7vlp"]
@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://bn7113nexxt76" path="res://scenes/background.tscn" id="4_jvnec"]
 [ext_resource type="PackedScene" uid="uid://b7mkumddatt5" path="res://scenes/shield.tscn" id="5_cyvgt"]
 [ext_resource type="AudioStream" uid="uid://2ywjk70lgrol" path="res://Assets/Audio/Button.mp3" id="8_cyvgt"]
+[ext_resource type="PackedScene" uid="uid://c7jhsau4rm3rq" path="res://scenes/RotateIcon.tscn" id="9_nhv1u"]
+[ext_resource type="PackedScene" uid="uid://dhv4hmkx0bg2x" path="res://scenes/PressIcon.tscn" id="10_3dpnx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b862d"]
 bg_color = Color(0, 0.803922, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs8jd"]
-bg_color = Color(0.839216, 0, 0, 1)
+bg_color = Color(0.8392157, 0, 0, 0)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -38,10 +40,29 @@ scale = Vector2(0.5, 0.5)
 [node name="Logo" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 249.0
-offset_top = 48.0
+offset_top = 26.0
 offset_right = 1032.0
-offset_bottom = 274.0
+offset_bottom = 252.0
 texture = ExtResource("1_p7vlp")
+
+[node name="Tagline" type="Label" parent="Logo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.5
+offset_top = 111.0
+offset_right = 266.5
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_f371u")
+theme_override_font_sizes/font_size = 36
+text = "Defend The Last Base of the Humanity!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 1
@@ -68,10 +89,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 610.0
-offset_top = 368.0
-offset_right = 782.0
-offset_bottom = 429.0
+offset_left = 597.0
+offset_top = 336.0
+offset_right = 769.0
+offset_bottom = 397.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_f371u")
@@ -82,6 +103,69 @@ text = "QUIT"
 [node name="Button" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_cyvgt")
 bus = &"SFX"
+
+[node name="How to play" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.0
+offset_top = 120.0
+offset_right = 270.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_f371u")
+theme_override_font_sizes/font_size = 44
+text = "How to Play:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rotate" type="Label" parent="How to play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.5
+offset_top = 36.5
+offset_right = 264.5
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_f371u")
+theme_override_font_sizes/font_size = 36
+text = "Rotate the knob to rotate the shield"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RotateIcon" parent="How to play/Rotate" instance=ExtResource("9_nhv1u")]
+position = Vector2(-39.999996, 19.999998)
+
+[node name="Press" type="Label" parent="How to play"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.5
+offset_top = 90.5
+offset_right = 262.5
+offset_bottom = 127.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_f371u")
+theme_override_font_sizes/font_size = 36
+text = "Press the knob to start the game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressIcon" parent="How to play/Press" instance=ExtResource("10_3dpnx")]
+position = Vector2(0, 24)
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

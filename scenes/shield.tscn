@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7mkumddatt5"]
+[gd_scene load_steps=4 format=3 uid="uid://b7mkumddatt5"]
 
 [ext_resource type="Script" uid="uid://dpfrcd0g8r0hy" path="res://scripts/shield.gd" id="1_q4kbl"]
-[ext_resource type="Texture2D" uid="uid://ccn8ngoxuum0l" path="res://Assets/Shield.png" id="2_opsgi"]
 [ext_resource type="AudioStream" uid="uid://h28vmn5lch8o" path="res://Assets/Audio/Shield-Hit.mp3" id="3_37u7r"]
 [ext_resource type="AudioStream" uid="uid://cxyge2wkxivv5" path="res://Assets/Audio/HealthFail2.mp3" id="4_gsp1a"]
 
@@ -12,13 +11,7 @@ script = ExtResource("1_q4kbl")
 collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RotationOffset"]
-polygon = PackedVector2Array(145, -85, 170, -26, 168, 30, 149, 85, 180, 104, 207, 34, 208, -33, 179, -102)
-
-[node name="Sprite2D" type="Sprite2D" parent="RotationOffset"]
-texture_filter = 1
-position = Vector2(122, 0)
-rotation = 1.5708
-texture = ExtResource("2_opsgi")
+polygon = PackedVector2Array(147, 85, 179, 103, 193, 74, 204, 35, 207, 0, 203, -45, 188, -85, 179, -103, 147, -85, 153, -74, 165, -41, 170, -1, 167, 28, 160, 57)
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_37u7r")

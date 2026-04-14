@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhv4hmkx0bg2x"]
+
+[ext_resource type="Script" uid="uid://brq3wpj0rv8ir" path="res://scenes/press_icon.gd" id="1_7wqgr"]
+
+[node name="PressIcon" type="Node2D"]
+scale = Vector2(0.9, 0.9)
+script = ExtResource("1_7wqgr")

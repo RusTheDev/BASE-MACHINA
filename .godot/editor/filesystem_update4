@@ -1,7 +1,8 @@
-res://scenes/main.tscn
-res://scripts/game_manager.gd
+res://scenes/shield.tscn
 res://scripts/shield.gd
 res://Menus/menu.tscn
-res://scripts/base.gd
-res://Menus/menu.gd
-res://scripts/game_over.gd
+res://scenes/main.tscn
+res://scenes/RotateIcon.tscn
+res://scenes/rotate_icon.gd
+res://scenes/PressIcon.tscn
+res://scenes/press_icon.gd
