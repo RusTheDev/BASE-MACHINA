@@ -13,11 +13,13 @@ var end_angle: float = deg_to_rad(30)
 var point_count: int = 30
 var width: float = 36
 
+
 func _draw() -> void:
 	draw_arc(Vector2.ZERO, radius, start_angle, end_angle, point_count, Color.GREEN, width)
 
 func _ready() -> void:
 	GameManager.ArduinoRead.connect(_on_arduino_read)
+	print($RotationOffset.area_entered.get_connections())
 
 func _physics_process(_delta: float) -> void:
 	var _key_pressed := false
@@ -55,14 +57,16 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_rotation_offset_area_entered(_area: Area2D) -> void:
-	Global.score += 1
-	$HitSound.play()
-	if _area and _area.is_in_group("health"):
+	if  _area and _area.is_in_group("bullets"):
+		Global.score += 1
+		$HitSound.play()
+	elif _area and _area.is_in_group("health"):
 		Global.score -= 1
 		$HealFail.play()
 
 func _on_arduino_read(response: Variant) -> void:
-	rotation = deg_to_rad(response * speedRotation)
+	#rotation = deg_to_rad(response * speedRotation)
+	rotation = lerp_angle(rotation, deg_to_rad(response * speedRotation), 0.15)
 	#print(rotation_offset.rotation_degrees)
 
 #func _on_game_manager_arduino_read(response: Variant) -> void:

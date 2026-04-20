@@ -1,1 +1,9 @@
+res://scenes/main.tscn
+res://scripts/score.gd
+res://scripts/shield.gd
+res://scenes/shield.tscn
+res://scenes/bullet.tscn
+res://scripts/enemy.gd
 res://scripts/Global.gd
+res://scenes/high_score.gd
+res://Menus/menu.tscn

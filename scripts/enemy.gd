@@ -85,8 +85,7 @@ func fire_bullet() -> void:
 	ammo_bar.value = ammo_count
 	if ammo_count <= 0:
 		out_of_ammo()
-	else:
-		object_spawn(bullet_scene)
+
 
 func object_spawn(scene: PackedScene) -> void:
 	var instance = scene.instantiate()
