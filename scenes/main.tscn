@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cl3linm1p282"]
+[gd_scene load_steps=26 format=3 uid="uid://cl3linm1p282"]
 
 [ext_resource type="PackedScene" uid="uid://b7mkumddatt5" path="res://scenes/shield.tscn" id="1_a27ak"]
 [ext_resource type="Script" uid="uid://dppno0r882cyb" path="res://scripts/main.gd" id="1_y3hdt"]
@@ -12,13 +12,22 @@
 [ext_resource type="Script" uid="uid://cmv66eam1evso" path="res://scripts/loading.gd" id="7_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://c5tytfslxupei" path="res://Assets/Audio/Music60.mp3" id="9_dh7rg"]
 [ext_resource type="PackedScene" uid="uid://bcwdr5myw1lbm" path="res://scenes/button_press.tscn" id="10_r32jt"]
+[ext_resource type="PackedScene" uid="uid://6lty12txrybv" path="res://scenes/healthIcon.tscn" id="11_gqmmt"]
 [ext_resource type="FontFile" uid="uid://cuea07go4rmob" path="res://Assets/VT323-Regular.ttf" id="12_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://clwmqej5j2cov" path="res://scenes/health.tscn" id="12_dp3eg"]
 [ext_resource type="AudioStream" uid="uid://ddcna7cmji883" path="res://Assets/Audio/gameover.mp3" id="13_muem4"]
 [ext_resource type="Script" uid="uid://dbk4kmyyxh5jb" path="res://scenes/high_score.gd" id="14_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://bn7113nexxt76" path="res://scenes/background.tscn" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dhv4hmkx0bg2x" path="res://scenes/PressIcon.tscn" id="15_0ld40"]
 [ext_resource type="Script" uid="uid://qtevkwrskqrg" path="res://scenes/background.gd" id="15_jbj1t"]
+[ext_resource type="Shader" uid="uid://ob05xwewbl2h" path="res://shader/crtshader.gdshader" id="20_gqmmt"]
+
+[sub_resource type="Environment" id="Environment_gqmmt"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.95
+glow_bloom = 0.8
+glow_hdr_threshold = 0.5
+glow_hdr_scale = 1.0
 
 [sub_resource type="Curve2D" id="Curve2D_xiqbh"]
 _data = {
@@ -26,14 +35,42 @@ _data = {
 }
 point_count = 9
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwjqa"]
-bg_color = Color(0, 0.8039216, 0, 0)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yc10j"]
+shader = ExtResource("20_gqmmt")
+shader_parameter/brightness = 1.5200000722
+shader_parameter/contrast = 1.7550000833625
+shader_parameter/saturation = 1.0000000475
+shader_parameter/gamma = 2.50000011223023
+shader_parameter/curvature = 0.058000002755
+shader_parameter/corner_soften = 0.0730000034675
+shader_parameter/vignette = 0.1070000050825
+shader_parameter/scanline_strength = 0.5
+shader_parameter/scanline_density = 3.0
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 2.90000013775
+shader_parameter/luma_smear_px = 1.382000065645
+shader_parameter/jitter_px = 0.400000019
+shader_parameter/wobble_px = 0.818000038855
+shader_parameter/tape_noise = 0.3450000163875
+shader_parameter/tape_lines = 0.18000000855
+shader_parameter/roll_speed = 0.2190000104025
+shader_parameter/roll_strength = 0.0610000028975
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq1lh"]
 bg_color = Color(0.8392157, 0, 0, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwjqa"]
+bg_color = Color(0, 0.8039216, 0, 0)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_y3hdt")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gqmmt")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -128,7 +165,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.0269, 1.05586)
 
-[node name="Label" type="Label" parent="GameOver"]
+[node name="Game Over" type="Label" parent="GameOver"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -145,7 +182,7 @@ theme_override_font_sizes/font_size = 80
 text = "GAME OVER"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="GameOver/Label"]
+[node name="Tip" type="Label" parent="GameOver/Game Over"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -163,9 +200,9 @@ theme_override_font_sizes/font_size = 48
 text = "Tip: Don't Block     with the shield"
 horizontal_alignment = 1
 
-[node name="Health" parent="GameOver/Label/Label" instance=ExtResource("12_dp3eg")]
-position = Vector2(321, 25)
-scale = Vector2(0.7899305, -0.7633637)
+[node name="HealthIcon" parent="GameOver/Game Over/Tip" instance=ExtResource("11_gqmmt")]
+position = Vector2(320, 28)
+scale = Vector2(0.80582285, 0.80582285)
 
 [node name="High Score" type="Label" parent="GameOver"]
 anchors_preset = 8
@@ -202,40 +239,6 @@ text = "Score"
 horizontal_alignment = 1
 script = ExtResource("5_ylkt3")
 
-[node name="Retry" type="Button" parent="GameOver"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 588.0
-offset_top = 245.0
-offset_right = 760.0
-offset_bottom = 306.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_xwjqa")
-text = "RETRY"
-
-[node name="Quit" type="Button" parent="GameOver"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 587.0
-offset_top = 326.0
-offset_right = 759.0
-offset_bottom = 387.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_jq1lh")
-text = "QUIT"
-
 [node name="GameOcerSound" type="AudioStreamPlayer2D" parent="GameOver"]
 stream = ExtResource("13_muem4")
 bus = &"SFX"
@@ -264,20 +267,20 @@ position = Vector2(-1, 24)
 [node name="Game UI" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="Game UI"]
-offset_left = 14.0
-offset_top = 53.0
-offset_right = 196.0
-offset_bottom = 92.0
+offset_left = 32.0
+offset_top = 69.0
+offset_right = 214.0
+offset_bottom = 108.0
 theme_override_fonts/font = ExtResource("12_a8y0u")
 theme_override_font_sizes/font_size = 38
 text = "Your Score:"
 script = ExtResource("5_ylkt3")
 
 [node name="High Score" type="Label" parent="Game UI"]
-offset_left = 14.0
-offset_top = 13.0
-offset_right = 196.0
-offset_bottom = 52.0
+offset_left = 32.0
+offset_top = 29.0
+offset_right = 214.0
+offset_bottom = 68.0
 theme_override_fonts/font = ExtResource("12_a8y0u")
 theme_override_font_sizes/font_size = 38
 text = "High Score:"
@@ -293,7 +296,53 @@ bus = &"Music"
 [node name="Background" parent="." instance=ExtResource("14_jkv2x")]
 script = ExtResource("15_jbj1t")
 
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_yc10j")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="Shader"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 587.0
+offset_top = 326.0
+offset_right = 759.0
+offset_bottom = 387.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jq1lh")
+text = "QUIT"
+
+[node name="Retry" type="Button" parent="Shader"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 588.0
+offset_top = 245.0
+offset_right = 760.0
+offset_bottom = 306.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_xwjqa")
+text = "RETRY"
+
 [connection signal="timeout" from="Wave Manager/Enemy Spawner/Timer" to="Wave Manager/Enemy Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="Wave Manager/Loading/Timer" to="Wave Manager/Loading" method="_on_timer_timeout"]
-[connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]
-[connection signal="pressed" from="GameOver/Quit" to="GameOver" method="_on_quit_pressed"]
+[connection signal="pressed" from="Shader/Quit" to="GameOver" method="_on_quit_pressed"]
+[connection signal="pressed" from="Shader/Retry" to="GameOver" method="_on_retry_pressed"]

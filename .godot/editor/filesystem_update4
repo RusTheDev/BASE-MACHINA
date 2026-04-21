@@ -1,1 +1,7 @@
+res://scenes/main.tscn
+res://shader/crtshader.gdshader
 res://scenes/hitParticles.tscn
+res://Menus/menu.tscn
+res://scripts/game_over.gd
+res://scenes/healthIcon.tscn
+res://scenes/health_icon.gd

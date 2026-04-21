@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1776736582
+::res://::1776782775
 default_bus_layout.tres::AudioBusLayout::2678238582314538948::1743979344::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1765459002::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::6574807770325258088::1743472063::1773878180::1::::<><><>0<>0<>faf73a1bd7a4e0465a357949973125d1<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
@@ -16,7 +16,7 @@ README.md::TextFile::-1::1761870601::0::1::::<><><>0<>0<><>::
 ::res://addons/gdserial/bin/macos-arm64/::1761870602
 ::res://addons/gdserial/bin/macos-x86_64/::1761870602
 ::res://addons/gdserial/bin/windows-arm64/::1761870602
-::res://addons/gdserial/bin/windows-x86_64/::1776736577
+::res://addons/gdserial/bin/windows-x86_64/::1776782770
 ::res://addons/gdserial/doc/::1761870602
 ::res://addons/gdserial/doc/en/::1761870602
 GdSerial.xml::TextFile::-1::1761870602::0::1::::<><><>0<>0<><>::
@@ -53,7 +53,7 @@ warn-arduino_bridge.txt::TextFile::-1::1760100304::0::1::::<><><>0<>0<><>::
 menu.gd::GDScript::1834839876893860655::1774666526::0::1::::<>Control<><>0<>0<><>::
 menu.tscn::PackedScene::3263522416150696028::1776699315::0::1::::<><><>0<>0<><>::uid://1e2srw34feqh::::res://Menus/menu.gd<>uid://bwdj1db573qi0::::res://Assets/BaseMachinaLogo.png<>uid://cl3sf2s4ych25::::res://scenes/menuBackground.gd<>uid://cuea07go4rmob::::res://Assets/VT323-Regular.ttf<>uid://2vim32okptef::::res://scenes/Base.tscn<>uid://bn7113nexxt76::::res://scenes/background.tscn<>uid://b7mkumddatt5::::res://scenes/shield.tscn<>uid://2ywjk70lgrol::::res://Assets/Audio/Button.mp3<>uid://c7jhsau4rm3rq::::res://scenes/RotateIcon.tscn<>uid://dhv4hmkx0bg2x::::res://scenes/PressIcon.tscn
 ::res://RuslanEncoderWithTimerInterrupts/::1774321470
-::res://scenes/::1776716224
+::res://scenes/::1776736595
 background.gd::GDScript::1162525605194789528::1774321470::0::1::::<>Node2D<><>0<>1<><>::
 background.tscn::PackedScene::3366562302520556179::1773881149::0::1::::<><><>0<>0<><>::
 Base.tscn::PackedScene::1938959389544714353::1776627509::0::1::::<><><>0<>0<><>::uid://gpbxrye80ia2::::res://scripts/base.gd<>uid://cri2abhdqucw6::::res://Assets/Audio/Fail.mp3<>uid://wg3k7k8aeqj5::::res://Assets/Audio/Healing.mp3
@@ -63,7 +63,7 @@ enemy.tscn::PackedScene::3513050299416370042::1774375080::0::1::::<><><>0<>0<><>
 health.gd::GDScript::8155696018177047007::1776715118::0::1::::<>Area2D<><>0<>1<><>::
 health.tscn::PackedScene::5591092359982343393::1776715066::0::1::::<><><>0<>0<><>::uid://dogxee4qi8al8::::res://scenes/health.gd<>uid://b5kyvon20np3i::::res://scenes/hitParticles.tscn
 high_score.gd::GDScript::7251873991464213459::1776696973::0::1::::<>Label<><>0<>0<><>::
-hitParticles.tscn::PackedScene::4514225236543121812::1776715118::0::1::::<><><>0<>0<><>::uid://wd7ixerjblxv::::res://scenes/hit_particles.gd
+hitParticles.tscn::PackedScene::4514225236543121812::1776736595::0::1::::<><><>0<>0<><>::uid://wd7ixerjblxv::::res://scenes/hit_particles.gd
 hit_particles.gd::GDScript::1552306138419410823::1776712617::0::1::::<>CPUParticles2D<><>0<>0<><>::
 main.tscn::PackedScene::164806002950987457::1776716224::0::1::::<><><>0<>0<><>::uid://b7mkumddatt5::::res://scenes/shield.tscn<>uid://dppno0r882cyb::::res://scripts/main.gd<>uid://2vim32okptef::::res://scenes/Base.tscn<>uid://dkdoxp3n3n7r7::::res://scripts/enemy_spawner.gd<>uid://bqb0opq2yxe31::::res://scenes/enemy.tscn<>uid://bnbtm4wg12g8i::::res://scripts/path_follow_2d.gd<>uid://bkx61yuyko53w::::res://scripts/game_over.gd<>uid://cnsdb8hk4sqgp::::res://Assets/Audio/EnemySpawningIn.mp3<>uid://du2mgcxhy16os::::res://scripts/score.gd<>uid://cmv66eam1evso::::res://scripts/loading.gd<>uid://c5tytfslxupei::::res://Assets/Audio/Music60.mp3<>uid://bcwdr5myw1lbm::::res://scenes/button_press.tscn<>uid://cuea07go4rmob::::res://Assets/VT323-Regular.ttf<>uid://clwmqej5j2cov::::res://scenes/health.tscn<>uid://ddcna7cmji883::::res://Assets/Audio/gameover.mp3<>uid://dbk4kmyyxh5jb::::res://scenes/high_score.gd<>uid://bn7113nexxt76::::res://scenes/background.tscn<>uid://dhv4hmkx0bg2x::::res://scenes/PressIcon.tscn<>uid://qtevkwrskqrg::::res://scenes/background.gd
 menuBackground.gd::GDScript::5603824506644273280::1774321470::0::1::::<>Node2D<><>0<>1<><>::

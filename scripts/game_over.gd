@@ -25,12 +25,17 @@ func game_over():
 	get_tree().paused = true
 	can_restart = true
 	remove_bullets()
+	remove_health()
 	$GameOcerSound.play(1.47)
 	self.show()
 
 func remove_bullets():
-	for bullet in get_tree().get_nodes_in_group("bullets"):  # Get all nodes in the "bullets" group
-		bullet.queue_free()  # Remove the bullet from the scene
+	for bullet in get_tree().get_nodes_in_group("bullets"):  
+		bullet.queue_free()  
+
+func remove_health():
+	for bullet in get_tree().get_nodes_in_group("health"):  
+		bullet.queue_free()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

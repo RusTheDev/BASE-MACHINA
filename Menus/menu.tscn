@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmq40cojlu35a"]
+[gd_scene load_steps=16 format=3 uid="uid://bmq40cojlu35a"]
 
 [ext_resource type="Script" uid="uid://1e2srw34feqh" path="res://Menus/menu.gd" id="1_np5ha"]
 [ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://Assets/BaseMachinaLogo.png" id="1_p7vlp"]
@@ -10,9 +10,43 @@
 [ext_resource type="AudioStream" uid="uid://2ywjk70lgrol" path="res://Assets/Audio/Button.mp3" id="8_cyvgt"]
 [ext_resource type="PackedScene" uid="uid://c7jhsau4rm3rq" path="res://scenes/RotateIcon.tscn" id="9_nhv1u"]
 [ext_resource type="PackedScene" uid="uid://dhv4hmkx0bg2x" path="res://scenes/PressIcon.tscn" id="10_3dpnx"]
+[ext_resource type="Shader" uid="uid://ob05xwewbl2h" path="res://shader/crtshader.gdshader" id="11_150j7"]
+
+[sub_resource type="Environment" id="Environment_150j7"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.95
+glow_bloom = 0.8
+glow_hdr_threshold = 0.5
+glow_hdr_scale = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b862d"]
 bg_color = Color(0, 0.803922, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vmkh2"]
+shader = ExtResource("11_150j7")
+shader_parameter/brightness = 1.2700000603250001
+shader_parameter/contrast = 1.762000083695
+shader_parameter/saturation = 1.23600005871
+shader_parameter/gamma = 1.81400007964523
+shader_parameter/curvature = 0.058000002755
+shader_parameter/corner_soften = 0.0730000034675
+shader_parameter/vignette = 0.1070000050825
+shader_parameter/scanline_strength = 0.5
+shader_parameter/scanline_density = 1.0
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 2.90000013775
+shader_parameter/luma_smear_px = 1.382000065645
+shader_parameter/jitter_px = 0.400000019
+shader_parameter/wobble_px = 0.818000038855
+shader_parameter/tape_noise = 0.3450000163875
+shader_parameter/tape_lines = 0.18000000855
+shader_parameter/roll_speed = 0.2190000104025
+shader_parameter/roll_strength = 0.0610000028975
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs8jd"]
 bg_color = Color(0.8392157, 0, 0, 0)
@@ -25,6 +59,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_np5ha")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_150j7")
 
 [node name="Background" parent="." instance=ExtResource("4_jvnec")]
 script = ExtResource("3_6ex8j")
@@ -85,24 +122,6 @@ theme_override_fonts/font = ExtResource("3_f371u")
 theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxFlat_b862d")
 text = "START"
-
-[node name="Quit" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 585.0
-offset_top = 339.0
-offset_right = 757.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_f371u")
-theme_override_font_sizes/font_size = 37
-theme_override_styles/normal = SubResource("StyleBoxFlat_rs8jd")
-text = "QUIT"
 
 [node name="Button" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_cyvgt")
@@ -171,5 +190,33 @@ vertical_alignment = 1
 [node name="PressIcon" parent="How to play/Press" instance=ExtResource("10_3dpnx")]
 position = Vector2(-1, 24)
 
+[node name="Shader" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource("ShaderMaterial_vmkh2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Quit" type="Button" parent="Shader"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 585.0
+offset_top = 339.0
+offset_right = 757.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_f371u")
+theme_override_font_sizes/font_size = 37
+theme_override_styles/normal = SubResource("StyleBoxFlat_rs8jd")
+text = "QUIT"
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Shader/Quit" to="." method="_on_quit_pressed"]
