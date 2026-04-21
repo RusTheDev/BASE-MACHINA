@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmq40cojlu35a"]
+[gd_scene load_steps=17 format=3 uid="uid://bmq40cojlu35a"]
 
 [ext_resource type="Script" uid="uid://1e2srw34feqh" path="res://Menus/menu.gd" id="1_np5ha"]
 [ext_resource type="Texture2D" uid="uid://bwdj1db573qi0" path="res://Assets/BaseMachinaLogo.png" id="1_p7vlp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c7jhsau4rm3rq" path="res://scenes/RotateIcon.tscn" id="9_nhv1u"]
 [ext_resource type="PackedScene" uid="uid://dhv4hmkx0bg2x" path="res://scenes/PressIcon.tscn" id="10_3dpnx"]
 [ext_resource type="Shader" uid="uid://ob05xwewbl2h" path="res://shader/crtshader.gdshader" id="11_150j7"]
+[ext_resource type="Script" uid="uid://dbk4kmyyxh5jb" path="res://scenes/high_score.gd" id="12_vmkh2"]
 
 [sub_resource type="Environment" id="Environment_150j7"]
 background_mode = 3
@@ -20,12 +21,9 @@ glow_bloom = 0.8
 glow_hdr_threshold = 0.5
 glow_hdr_scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b862d"]
-bg_color = Color(0, 0.803922, 0, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vmkh2"]
 shader = ExtResource("11_150j7")
-shader_parameter/brightness = 1.2700000603250001
+shader_parameter/brightness = 1.270000060325
 shader_parameter/contrast = 1.762000083695
 shader_parameter/saturation = 1.23600005871
 shader_parameter/gamma = 1.81400007964523
@@ -50,6 +48,9 @@ shader_parameter/glow_threshold = 0.65
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rs8jd"]
 bg_color = Color(0.8392157, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b862d"]
+bg_color = Color(0, 0.80363095, 0, 0)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -80,9 +81,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -391.0
-offset_top = 19.0
+offset_top = 8.0
 offset_right = 392.0
-offset_bottom = 245.0
+offset_bottom = 234.0
 grow_horizontal = 2
 texture = ExtResource("1_p7vlp")
 
@@ -105,23 +106,23 @@ text = "Defend The Last Base of the Humanity!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Start" type="Button" parent="."]
+[node name="High Score" type="Label" parent="Logo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -91.0
-offset_top = 452.0
-offset_right = 81.0
-offset_bottom = 513.0
+offset_left = -90.5
+offset_top = 144.0
+offset_right = 91.5
+offset_bottom = 183.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_f371u")
-theme_override_font_sizes/font_size = 38
-theme_override_styles/normal = SubResource("StyleBoxFlat_b862d")
-text = "START"
+theme_override_font_sizes/font_size = 33
+text = "High Score:"
+script = ExtResource("12_vmkh2")
 
 [node name="Button" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_cyvgt")
@@ -135,9 +136,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -266.0
-offset_top = -204.0
+offset_top = -253.0
 offset_right = 267.0
-offset_bottom = -159.0
+offset_bottom = -208.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_f371u")
@@ -154,9 +155,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -268.5
-offset_top = 36.5
+offset_top = 91.5
 offset_right = 264.5
-offset_bottom = 73.5
+offset_bottom = 128.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_f371u")
@@ -176,9 +177,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -270.5
-offset_top = 90.5
+offset_top = 35.5
 offset_right = 262.5
-offset_bottom = 127.5
+offset_bottom = 72.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_f371u")
@@ -207,16 +208,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 585.0
-offset_top = 339.0
-offset_right = 757.0
-offset_bottom = 400.0
+offset_left = 419.0
+offset_top = 310.0
+offset_right = 591.0
+offset_bottom = 371.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_f371u")
 theme_override_font_sizes/font_size = 37
 theme_override_styles/normal = SubResource("StyleBoxFlat_rs8jd")
-text = "QUIT"
+text = "
+"
 
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[node name="Start" type="Button" parent="Shader"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -598.0
+offset_top = 300.0
+offset_right = -426.0
+offset_bottom = 361.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_f371u")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxFlat_b862d")
+
 [connection signal="pressed" from="Shader/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Shader/Start" to="." method="_on_start_pressed"]

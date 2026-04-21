@@ -1,8 +1,10 @@
+Label
+Timer
+RichTextLabel
 CPUParticles2D
 WorldEnvironment
 ColorRect
 CanvasLayer
-Label
 AudioStreamPlayer2D
 Polygon2D
 Node2D
@@ -10,5 +12,3 @@ TextureProgressBar
 ProgressBar
 AudioStreamPlayer2D      - Matches the "sound" keyword.
 CollisionPolygon2D
-CollisionShape2D
-Area2D

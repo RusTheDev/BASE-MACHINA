@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 var can_restart: bool = false
+@onready var timer: Timer = $Timer
+
 
 func _ready() -> void:
 	if not GameManager.ButtonPress.is_connected(button_pressed):
@@ -15,7 +17,6 @@ func button_pressed() -> void:
 func _on_retry_pressed() -> void:
 	if not is_inside_tree():
 		return
-	
 	can_restart = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
@@ -23,6 +24,7 @@ func _on_retry_pressed() -> void:
 
 func game_over():
 	get_tree().paused = true
+	timer.start()
 	can_restart = true
 	remove_bullets()
 	remove_health()
@@ -39,3 +41,10 @@ func remove_health():
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+func _on_timer_timeout() -> void:
+	remove_bullets()
+	remove_health()
+	get_tree().paused = false
+	Global.score = 0
+	get_tree().change_scene_to_file("res://Menus/menu.tscn") 

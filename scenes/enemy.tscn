@@ -38,7 +38,6 @@ fill_mode = 1
 show_percentage = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
 position = Vector2(-125.00018, -2.941181)
 polygon = PackedVector2Array(-116.17664, -77.9413, -35.294167, 2.941181, -116.17664, 83.823654, 44.117714, 83.823654, 125.00019, 2.941181, 44.117714, -77.9413)
 

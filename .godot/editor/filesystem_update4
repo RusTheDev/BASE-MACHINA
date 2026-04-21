@@ -1,8 +1,9 @@
+res://Menus/menu.tscn
 res://shader/crtshader.gdshader
-res://scenes/explosionParticles.tscn
-res://scenes/explosion_particles.gd
-res://scenes/Base.tscn
-res://scripts/base.gd
 res://scenes/main.tscn
+res://scripts/shield.gd
 res://scenes/enemy.tscn
-res://scripts/enemy.gd
+res://scripts/game_over.gd
+res://scripts/main.gd
+res://scenes/high_score.gd
+res://scenes/continue.gd

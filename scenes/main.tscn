@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cl3linm1p282"]
+[gd_scene load_steps=27 format=3 uid="uid://cl3linm1p282"]
 
 [ext_resource type="PackedScene" uid="uid://b7mkumddatt5" path="res://scenes/shield.tscn" id="1_a27ak"]
 [ext_resource type="Script" uid="uid://dppno0r882cyb" path="res://scripts/main.gd" id="1_y3hdt"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bn7113nexxt76" path="res://scenes/background.tscn" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dhv4hmkx0bg2x" path="res://scenes/PressIcon.tscn" id="15_0ld40"]
 [ext_resource type="Script" uid="uid://qtevkwrskqrg" path="res://scenes/background.gd" id="15_jbj1t"]
+[ext_resource type="Script" uid="uid://cw25kxce02dg" path="res://scenes/continue.gd" id="15_yc10j"]
 [ext_resource type="Shader" uid="uid://ob05xwewbl2h" path="res://shader/crtshader.gdshader" id="20_gqmmt"]
 
 [sub_resource type="Environment" id="Environment_gqmmt"]
@@ -34,6 +35,12 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -2, -522, -168.867, -197.408, 168.867, 197.408, 354, -367, 0, 0, 0, 0, 513, -22, 147.462, -168.867, -147.462, 168.867, 361, 337, 0, 0, 0, 0, -5, 461, 130.813, 187.895, -130.813, -187.895, -367, 309, 0, 0, 0, 0, -484, -10, -197.408, 180.759, 197.408, -180.759, -341, -372, 0, 0, 0, 0, -2, -522)
 }
 point_count = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq1lh"]
+bg_color = Color(0.8392157, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwjqa"]
+bg_color = Color(0, 0.8039216, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc10j"]
 shader = ExtResource("20_gqmmt")
@@ -59,12 +66,6 @@ shader_parameter/roll_speed = 0.2190000104025
 shader_parameter/roll_strength = 0.0610000028975
 shader_parameter/glow_strength = 0.25
 shader_parameter/glow_threshold = 0.65
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq1lh"]
-bg_color = Color(0.8392157, 0, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwjqa"]
-bg_color = Color(0, 0.8039216, 0, 0)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_y3hdt")
@@ -150,9 +151,30 @@ rotation = 1.1675732
 progress = 635.155
 script = ExtResource("4_w2s4o")
 
+[node name="Game UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="Game UI"]
+offset_left = 32.0
+offset_top = 69.0
+offset_right = 214.0
+offset_bottom = 108.0
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 38
+text = "Your Score:"
+script = ExtResource("5_ylkt3")
+
+[node name="High Score" type="Label" parent="Game UI"]
+offset_left = 32.0
+offset_top = 29.0
+offset_right = 214.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 38
+text = "High Score:"
+script = ExtResource("14_dp3eg")
+
 [node name="GameOver" type="CanvasLayer" parent="."]
 process_mode = 3
-visible = false
 script = ExtResource("5_d1ca1")
 
 [node name="Panel" type="Panel" parent="GameOver"]
@@ -243,48 +265,79 @@ script = ExtResource("5_ylkt3")
 stream = ExtResource("13_muem4")
 bus = &"SFX"
 
+[node name="Continue" type="Label" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = 115.0
+offset_right = 89.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_a8y0u")
+theme_override_font_sizes/font_size = 43
+text = "Continue?"
+script = ExtResource("15_yc10j")
+
 [node name="Press" type="Label" parent="GameOver"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -246.0
-offset_top = 116.0
-offset_right = 287.0
-offset_bottom = 153.0
+offset_left = -251.0
+offset_top = 172.5
+offset_right = 293.0
+offset_bottom = 212.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 36
-text = "Press the knob to start the game"
+theme_override_font_sizes/font_size = 40
+text = "Press the knob to restart the game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PressIcon" parent="GameOver/Press" instance=ExtResource("15_0ld40")]
-position = Vector2(-1, 24)
+position = Vector2(-36.5, 24.5)
 
-[node name="Game UI" type="CanvasLayer" parent="."]
-
-[node name="Score" type="Label" parent="Game UI"]
-offset_left = 32.0
-offset_top = 69.0
-offset_right = 214.0
-offset_bottom = 108.0
+[node name="Quit" type="Button" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = 265.0
+offset_right = 81.0
+offset_bottom = 326.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 38
-text = "Your Score:"
-script = ExtResource("5_ylkt3")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jq1lh")
 
-[node name="High Score" type="Label" parent="Game UI"]
-offset_left = 32.0
-offset_top = 29.0
-offset_right = 214.0
-offset_bottom = 68.0
+[node name="Retry" type="Button" parent="GameOver"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 184.0
+offset_right = 82.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 38
-text = "High Score:"
-script = ExtResource("14_dp3eg")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_xwjqa")
+
+[node name="Timer" type="Timer" parent="GameOver"]
+wait_time = 10.0
+one_shot = true
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_dh7rg")
@@ -308,41 +361,8 @@ grow_vertical = 2
 color = Color(0.012617188, 0.012617188, 0.012617188, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Quit" type="Button" parent="Shader"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 587.0
-offset_top = 326.0
-offset_right = 759.0
-offset_bottom = 387.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_jq1lh")
-text = "QUIT"
-
-[node name="Retry" type="Button" parent="Shader"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 588.0
-offset_top = 245.0
-offset_right = 760.0
-offset_bottom = 306.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("12_a8y0u")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_xwjqa")
-text = "RETRY"
-
 [connection signal="timeout" from="Wave Manager/Enemy Spawner/Timer" to="Wave Manager/Enemy Spawner" method="_on_timer_timeout"]
 [connection signal="timeout" from="Wave Manager/Loading/Timer" to="Wave Manager/Loading" method="_on_timer_timeout"]
-[connection signal="pressed" from="Shader/Quit" to="GameOver" method="_on_quit_pressed"]
-[connection signal="pressed" from="Shader/Retry" to="GameOver" method="_on_retry_pressed"]
+[connection signal="pressed" from="GameOver/Quit" to="GameOver" method="_on_quit_pressed"]
+[connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]
+[connection signal="timeout" from="GameOver/Timer" to="GameOver" method="_on_timer_timeout"]

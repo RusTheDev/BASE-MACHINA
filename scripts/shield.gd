@@ -20,6 +20,7 @@ func _draw() -> void:
 func _ready() -> void:
 	GameManager.ArduinoRead.connect(_on_arduino_read)
 	print($RotationOffset.area_entered.get_connections())
+	rotation = deg_to_rad(0)
 
 func _physics_process(_delta: float) -> void:
 	var _key_pressed := false
