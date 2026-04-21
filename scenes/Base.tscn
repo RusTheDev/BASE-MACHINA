@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://2vim32okptef"]
+[gd_scene load_steps=8 format=3 uid="uid://2vim32okptef"]
 
 [ext_resource type="Script" uid="uid://gpbxrye80ia2" path="res://scripts/base.gd" id="1_8okqh"]
+[ext_resource type="PackedScene" uid="uid://djr41dlnhjusk" path="res://scenes/explosionParticles.tscn" id="2_15k71"]
 [ext_resource type="AudioStream" uid="uid://cri2abhdqucw6" path="res://Assets/Audio/Fail.mp3" id="3_c5a4p"]
 [ext_resource type="AudioStream" uid="uid://wg3k7k8aeqj5" path="res://Assets/Audio/Healing.mp3" id="4_15k71"]
 
@@ -16,6 +17,7 @@ bg_color = Color(1, 0, 0, 1)
 [node name="Base" type="Area2D"]
 collision_mask = 6
 script = ExtResource("1_8okqh")
+explosionParticles = ExtResource("2_15k71")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-40, -22, -76, -22, -76, 67, 76, 67, 76, -22, 40, -22, 40, -67, -40, -67)

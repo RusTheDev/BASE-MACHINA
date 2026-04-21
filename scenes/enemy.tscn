@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqb0opq2yxe31"]
+[gd_scene load_steps=7 format=3 uid="uid://bqb0opq2yxe31"]
 
 [ext_resource type="Script" uid="uid://b2bg05tfldwsc" path="res://scripts/enemy.gd" id="1_1y66q"]
+[ext_resource type="PackedScene" uid="uid://djr41dlnhjusk" path="res://scenes/explosionParticles.tscn" id="2_5uy6h"]
 [ext_resource type="AudioStream" uid="uid://der2382moyo5u" path="res://Assets/Audio/laserfiring.mp3" id="3_4ra3w"]
 [ext_resource type="AudioStream" uid="uid://2v61wekoyr44" path="res://Assets/Audio/EnemyBlown.mp3" id="4_5uy6h"]
 
@@ -16,6 +17,7 @@ bg_color = Color(0.8054575, 0.807029, 0, 1)
 scale = Vector2(0.6, 0.6)
 collision_layer = 8
 script = ExtResource("1_1y66q")
+explosionParticles = ExtResource("2_5uy6h")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 show_behind_parent = true

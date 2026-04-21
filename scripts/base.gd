@@ -6,7 +6,7 @@ var current_health: int
 @onready var right: ProgressBar = $Right
 @onready var leftTop: ProgressBar = $Left/Left
 @onready var rightTop: ProgressBar = $Right/Right
-
+@export var explosionParticles: PackedScene
 
 func _ready():
 	current_health = max_health  # Initialize health to max_health
@@ -46,12 +46,18 @@ func _on_area_entered(area: Area2D) -> void:
 		reduce_health(1)  # Adjust health reduction amount if needed
 		area.queue_free()  # Remove the collided object from the scene
 		$Hitsound.play()
+		explosionEffect(Color.RED)
 		print("Current Health: ",current_health)
 	if area and area.is_in_group("health"):  # Ensure it's a valid object with the "collidable" group
 		add_health(1)  # Adjust health reduction amount if needed
 		area.queue_free()  # Remove the collided object from the scene
 		$Healsound.play()
+		explosionEffect(Color.GREEN)
 		print("Current Health: ",current_health)
-		
-	
-	
+
+func explosionEffect(color: Color):
+	var effect = explosionParticles.instantiate()
+	get_tree().current_scene.add_child(effect)
+	effect.position = self.global_position
+	effect.emitting = true
+	effect.color = color

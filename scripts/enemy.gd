@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene = preload("res://scenes/bullet.tscn")
 @export var fire_rate: float = 1.0
 @onready var ammo_bar: ProgressBar = $Polygon2D/ProgressBar
-
+@export var explosionParticles: PackedScene
 
 #Health
 @export var health_scene: PackedScene = preload("res://scenes/health.tscn")
@@ -97,12 +97,18 @@ func object_spawn(scene: PackedScene) -> void:
 
 func out_of_ammo() -> void:
 	print("Ammo Run Out")
+	explosionEffect(Color.BLUE)
 	if health_scene:
 		object_spawn(health_scene)
 		
 	queue_free() # Remove the enemy
 
-
+func explosionEffect(color: Color):
+	var effect = explosionParticles.instantiate()
+	get_tree().current_scene.add_child(effect)
+	effect.position = self.global_position
+	effect.emitting = true
+	effect.color = color
 
 #func fire_bullet() -> void:
 	#is_instance_valid(player)
