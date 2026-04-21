@@ -270,7 +270,7 @@ offset_right = 196.0
 offset_bottom = 92.0
 theme_override_fonts/font = ExtResource("12_a8y0u")
 theme_override_font_sizes/font_size = 38
-text = "Score"
+text = "Your Score:"
 script = ExtResource("5_ylkt3")
 
 [node name="High Score" type="Label" parent="Game UI"]
@@ -280,7 +280,7 @@ offset_right = 196.0
 offset_bottom = 52.0
 theme_override_fonts/font = ExtResource("12_a8y0u")
 theme_override_font_sizes/font_size = 38
-text = "High Score"
+text = "High Score:"
 script = ExtResource("14_dp3eg")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]

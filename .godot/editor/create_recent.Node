@@ -1,3 +1,4 @@
+CPUParticles2D
 Label
 AudioStreamPlayer2D
 Polygon2D
@@ -11,5 +12,3 @@ CollisionShape2D
 Area2D
 Timer
 PathFollow2D
-Path2D
-HTTPRequest

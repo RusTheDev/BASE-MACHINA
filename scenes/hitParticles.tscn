@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5kyvon20np3i"]
+
+[ext_resource type="Script" uid="uid://wd7ixerjblxv" path="res://scenes/hit_particles.gd" id="1_17tmt"]
+
+[sub_resource type="Curve" id="Curve_8hpg8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 25
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+gravity = Vector2(0, 0)
+initial_velocity_min = 62.29
+initial_velocity_max = 442.02
+scale_amount_min = 5.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_8hpg8")
+color = Color(1, 1, 0, 1)
+script = ExtResource("1_17tmt")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm0gqeylgw8yx"]
+[gd_scene load_steps=4 format=3 uid="uid://dm0gqeylgw8yx"]
 
 [ext_resource type="Script" uid="uid://ii6uhrhh0sq0" path="res://scripts/bullet.gd" id="1_bkkxl"]
+[ext_resource type="PackedScene" uid="uid://b5kyvon20np3i" path="res://scenes/hitParticles.tscn" id="2_y25gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nyt2"]
 size = Vector2(86, 27)
@@ -9,6 +10,7 @@ size = Vector2(86, 27)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_bkkxl")
+hitParticles = ExtResource("2_y25gk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(48, -0.5)
