@@ -17,13 +17,12 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("Start"):
 		_on_retry_pressed()
-	if Input.is_action_pressed("main menu"):
+	if Input.is_action_just_pressed("main menu"):
 		_on_timer_timeout()
 	if Global.shader_toggle:
 		shader.hide()
 	else:
 		shader.show()
-
 
 func button_pressed() -> void:
 	if can_restart == true:

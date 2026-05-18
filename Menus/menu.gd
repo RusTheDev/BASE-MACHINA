@@ -10,8 +10,8 @@ func _process(_delta: float) -> void:
 		_on_start_pressed()
 	if Input.is_action_just_pressed("ShaderOff"):
 		Global.shader_toggle = !Global.shader_toggle
-	#if Input.is_action_pressed("main menu"):
-		#_on_quit_pressed()
+	if Input.is_action_just_pressed("main menu"):
+		_on_quit_pressed()
 	if Global.shader_toggle:
 		shader.hide()
 	else:

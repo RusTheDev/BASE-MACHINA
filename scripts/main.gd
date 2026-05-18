@@ -2,7 +2,7 @@ extends Node2D
 @onready var shader: CanvasLayer = $Shader
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("main menu"):
+	if Input.is_action_just_pressed("main menu"):
 		for bullet in get_tree().get_nodes_in_group("bullets"):  # Get all nodes in the "bullets" group
 			bullet.queue_free()  # Remove bullets from the scene
 		for bullet in get_tree().get_nodes_in_group("health"):  # Get all nodes in the "bullets" group

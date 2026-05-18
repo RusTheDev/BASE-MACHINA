@@ -1,7 +1,6 @@
 res://Menus/menu.tscn
 res://shader/crtshader.gdshader
-res://scripts/Global.gd
 res://Menus/menu.gd
-res://scripts/game_manager.gd
 res://scenes/main.tscn
 res://scripts/game_over.gd
+res://scripts/main.gd
