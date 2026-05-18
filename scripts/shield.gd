@@ -13,14 +13,12 @@ var end_angle: float = deg_to_rad(30)
 var point_count: int = 30
 var width: float = 36
 
-
 func _draw() -> void:
 	draw_arc(Vector2.ZERO, radius, start_angle, end_angle, point_count, Color.GREEN, width)
 
 func _ready() -> void:
-	GameManager.ArduinoRead.connect(_on_arduino_read)
+	#GameManager.ArduinoRead.connect(_on_arduino_read)
 	print($RotationOffset.area_entered.get_connections())
-	rotation = deg_to_rad(0)
 
 func _physics_process(_delta: float) -> void:
 	var _key_pressed := false
@@ -50,12 +48,11 @@ func _physics_process(_delta: float) -> void:
 		rotation = deg_to_rad(90)
 		_key_pressed = true
 	
-	#Rotation Input Through Mouse (only when no key is pressed)
+	#Rotation Input Through Mouse
 	#if not _key_pressed:
-		#rotation_offset.rotation = lerp_angle(rotation_offset.rotation, (get_global_mouse_position() - global_position).angle(), 10*delta)
-	#look_at(get_global_mouse_position())
-	
-
+	#rotation = lerp_angle(rotation_offset.rotation, (get_global_mouse_position() - global_position).angle(), 10*_delta)
+	if not _key_pressed:
+		look_at(get_global_mouse_position())
 
 func _on_rotation_offset_area_entered(_area: Area2D) -> void:
 	if  _area and _area.is_in_group("bullets"):
@@ -65,11 +62,7 @@ func _on_rotation_offset_area_entered(_area: Area2D) -> void:
 		Global.score -= 1
 		$HealFail.play()
 
-func _on_arduino_read(response: Variant) -> void:
-	#rotation = deg_to_rad(response * speedRotation)
-	rotation = lerp_angle(rotation, deg_to_rad(response * speedRotation), 0.15)
-	#print(rotation_offset.rotation_degrees)
-
-#func _on_game_manager_arduino_read(response: Variant) -> void:
-	#rotation_offset.rotation = deg_to_rad(response * speedRotation)
-	#print(rotation_offset.rotation_degrees)
+#func _on_arduino_read(response: Variant) -> void:
+	##rotation = deg_to_rad(response * speedRotation)
+	#rotation = lerp_angle(rotation, deg_to_rad(response * speedRotation), 0.15)
+	##print(rotation_offset.rotation_degrees)

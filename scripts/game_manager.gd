@@ -47,13 +47,3 @@ func _process(_delta):
 		
 		var angle := int(line)
 		emit_signal("ArduinoRead", angle)
-
-func _simulate_keypress():
-	var a = InputEventAction.new()
-	a.action = "ui_accept" 
-	a.pressed = true
-	Input.parse_input_event(a)
-	
-	# Release it immediately so it's a single click
-	a.pressed = false
-	Input.parse_input_event(a)

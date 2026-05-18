@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var can_restart: bool = false
 @onready var timer: Timer = $Timer
+@onready var shader: CanvasLayer = $"../Shader"
 
 
 func _ready() -> void:
@@ -9,6 +10,20 @@ func _ready() -> void:
 		GameManager.ButtonPress.connect(button_pressed)
 	self.hide()
 	can_restart = false
+
+func _process(_delta: float) -> void:
+	if not self.visible:
+		return
+	
+	if Input.is_action_pressed("Start"):
+		_on_retry_pressed()
+	if Input.is_action_pressed("main menu"):
+		_on_timer_timeout()
+	if Global.shader_toggle:
+		shader.hide()
+	else:
+		shader.show()
+
 
 func button_pressed() -> void:
 	if can_restart == true:

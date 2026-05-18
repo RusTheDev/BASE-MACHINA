@@ -2,6 +2,7 @@ extends Node
 
 var score = 0
 var high_score = 0
+var shader_toggle = false
 
 func _process(_delta: float) -> void:
 	_high_score()

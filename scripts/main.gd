@@ -1,7 +1,5 @@
 extends Node2D
-
-
-
+@onready var shader: CanvasLayer = $Shader
 
 func _process(_delta: float) -> void:
 	if Input.is_action_pressed("main menu"):
@@ -11,4 +9,9 @@ func _process(_delta: float) -> void:
 			bullet.queue_free()  # Remove bullets from the scene
 		Global.score = 0  # Reset score if needed
 		get_tree().change_scene_to_file("res://Menus/menu.tscn") 
-		
+	
+	if Global.shader_toggle:
+		shader.hide()
+	else:
+		shader.show()
+	
